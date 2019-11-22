@@ -20,6 +20,12 @@ Route::post('/', 'GetCompanyAPI@getAPI');
 Route::post('/check', 'GetCompanyAPI@checkExit');
 // export pdf
 Route::get('/exportpdf','importExportController@exportpdf');
+//import excel
+Route::post('/importExcel','importExportController@importExcel');
+// export excel
+Route::post('/exportExcel','importExportController@exportExcel');
+// view import , export excel
+Route::get('/viewImportExportExcel','importExportController@viewImportExportExcel');
 // add more row
 Route::get('json','moreRowController@index');
 Route::post('store-json','moreRowController@store')->name('store-json');

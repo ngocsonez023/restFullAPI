@@ -38,10 +38,12 @@ tr:nth-child(even) {
             {{$data}}
             @endif
         </div>
-        <a href="{{ asset('viewcheckout') }}">send box momo</a>
-        <a href="{{ asset('exportpdf') }}">export pdf</a>
-        <a href="{{ asset('qrcode') }}">scan qr code</a>
-        <a href="{{ asset('viewImage') }}">upload image</a>
+    <ol>
+        <li><a href="{{ asset('viewcheckout') }}">send box momo</a></li>
+        <li><a href="{{ asset('viewImportExportExcel') }}">import export</a></li>
+        <li><a href="{{ asset('qrcode') }}">scan qr code</a></li>
+        <li><a href="{{ asset('viewImage') }}">upload image</a></li>
+    </ol>
 <p>==================get api SCTDL==================================</p>
         <form action="{{ action('GetCompanyAPI@checkExit') }}" method="post">
             @csrf
