@@ -1,0 +1,1404 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <base src="http://localhost/soctdl/public/" />
+    <meta charset="UTF-8">
+    <title>
+                    Sở Công Thương | Admin
+            </title>
+    <meta id="token" name="token" value="k88okEDYa5g2DxQQbxRLthjVb6hWW2qoseecuqy2" />
+    <meta name="csrf-token" content="k88okEDYa5g2DxQQbxRLthjVb6hWW2qoseecuqy2">
+    <meta name="user-api-token" content="735b3f9c-92a7-474e-a53f-c6ab1267c8a6">
+    <meta name="current-locale" content="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
+            <link media="all" type="text/css" rel="stylesheet" href="http://localhost/soctdl/public/themes/adminlte/vendor/bootstrap/dist/css/bootstrap.min.css">
+            <link media="all" type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+            <link media="all" type="text/css" rel="stylesheet" href="http://localhost/soctdl/public/themes/adminlte/vendor/datatables.net-bs/css/dataTables.bootstrap.min.css">
+            <link media="all" type="text/css" rel="stylesheet" href="http://localhost/soctdl/public/themes/adminlte/vendor/iCheck/skins/flat/blue.css">
+            <link media="all" type="text/css" rel="stylesheet" href="http://localhost/soctdl/public/themes/adminlte/vendor/admin-lte/dist/css/AdminLTE.css">
+            <link media="all" type="text/css" rel="stylesheet" href="http://localhost/soctdl/public/themes/adminlte/vendor/admin-lte/dist/css/skins/_all-skins.min.css">
+            <link media="all" type="text/css" rel="stylesheet" href="http://localhost/soctdl/public/themes/adminlte/vendor/animate.css/animate.min.css">
+            <link media="all" type="text/css" rel="stylesheet" href="http://localhost/soctdl/public/themes/adminlte/vendor/admin-lte/plugins/pace/pace.min.css">
+            
+            <link media="all" type="text/css" rel="stylesheet" href="http://localhost/soctdl/public/themes/adminlte/css/asgard.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <script src="http://localhost/soctdl/public/themes/adminlte/vendor/jquery/jquery.min.js"></script>
+    <script>
+    var Asgard = {
+        backendUrl: 'backend',
+        mediaGridCkEditor : 'http://localhost/soctdl/public/en/backend/media/media-grid/ckIndex',
+        mediaGridSelectUrl: 'http://localhost/soctdl/public/en/backend/media/media-grid/index',
+        dropzonePostUrl: 'http://localhost/soctdl/public/en/api/file-dropzone',
+        mediaSortUrl: 'http://localhost/soctdl/public/en/api/media/sort',
+        mediaLinkUrl: 'http://localhost/soctdl/public/en/api/media/link',
+        mediaUnlinkUrl: 'http://localhost/soctdl/public/en/api/media/unlink'
+    };
+</script>
+            <style>
+    li.error {
+        border-top-color: #dd4b39 !important;
+    }
+</style>
+    
+    <script>
+        $.ajaxSetup({
+            headers: { 'Authorization': 'Bearer 735b3f9c-92a7-474e-a53f-c6ab1267c8a6' }
+        });
+        var AuthorizationHeaderValue = 'Bearer 735b3f9c-92a7-474e-a53f-c6ab1267c8a6';
+    </script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <script type="text/javascript">
+    (function() {
+        var routes = {"debugbar.openhandler":{"uri":"_debugbar\/open","methods":["GET","HEAD"],"domain":null},"debugbar.clockwork":{"uri":"_debugbar\/clockwork\/{id}","methods":["GET","HEAD"],"domain":null},"debugbar.telescope":{"uri":"_debugbar\/telescope\/{id}","methods":["GET","HEAD"],"domain":null},"debugbar.assets.css":{"uri":"_debugbar\/assets\/stylesheets","methods":["GET","HEAD"],"domain":null},"debugbar.assets.js":{"uri":"_debugbar\/assets\/javascript","methods":["GET","HEAD"],"domain":null},"debugbar.cache.delete":{"uri":"_debugbar\/cache\/{key}\/{tags?}","methods":["DELETE"],"domain":null},"admin.block.block.index":{"uri":"en\/backend\/block\/blocks","methods":["GET","HEAD"],"domain":null},"admin.block.block.create":{"uri":"en\/backend\/block\/blocks\/create","methods":["GET","HEAD"],"domain":null},"admin.block.block.store":{"uri":"en\/backend\/block\/blocks","methods":["POST"],"domain":null},"admin.block.block.edit":{"uri":"en\/backend\/block\/blocks\/{block}\/edit","methods":["GET","HEAD"],"domain":null},"admin.block.block.update":{"uri":"en\/backend\/block\/blocks\/{block}","methods":["PUT"],"domain":null},"admin.block.block.destroy":{"uri":"en\/backend\/block\/blocks\/{block}","methods":["DELETE"],"domain":null},"api.blog.category.index":{"uri":"en\/api\/v1\/blog\/categories","methods":["GET","HEAD"],"domain":null},"api.blog.category.store":{"uri":"en\/api\/v1\/blog\/categories","methods":["POST"],"domain":null},"api.blog.category.update":{"uri":"en\/api\/v1\/blog\/categories\/{category}","methods":["POST"],"domain":null},"api.blog.category.destroy":{"uri":"en\/api\/v1\/blog\/categories\/{category}","methods":["DELETE"],"domain":null},"admin.blog.post.index":{"uri":"en\/backend\/blog\/posts","methods":["GET","HEAD"],"domain":null},"admin.blog.post.create":{"uri":"en\/backend\/blog\/posts\/create","methods":["GET","HEAD"],"domain":null},"admin.blog.post.store":{"uri":"en\/backend\/blog\/posts","methods":["POST"],"domain":null},"admin.blog.post.edit":{"uri":"en\/backend\/blog\/posts\/{post}\/edit","methods":["GET","HEAD"],"domain":null},"admin.blog.post.update":{"uri":"en\/backend\/blog\/posts\/{post}","methods":["PUT"],"domain":null},"admin.blog.post.destroy":{"uri":"en\/backend\/blog\/posts\/{post}","methods":["DELETE"],"domain":null},"admin.blog.category.index":{"uri":"en\/backend\/blog\/categories","methods":["GET","HEAD"],"domain":null},"admin.blog.category.create":{"uri":"en\/backend\/blog\/categories\/create","methods":["GET","HEAD"],"domain":null},"admin.blog.category.store":{"uri":"en\/backend\/blog\/categories","methods":["POST"],"domain":null},"admin.blog.category.edit":{"uri":"en\/backend\/blog\/categories\/{category}\/edit","methods":["GET","HEAD"],"domain":null},"admin.blog.category.update":{"uri":"en\/backend\/blog\/categories\/{category}","methods":["PUT"],"domain":null},"admin.blog.category.destroy":{"uri":"en\/backend\/blog\/categories\/{category}","methods":["DELETE"],"domain":null},"en.blog":{"uri":"en\/blog\/posts","methods":["GET","HEAD"],"domain":null},"en.blog.slug":{"uri":"en\/blog\/posts\/{slug}","methods":["GET","HEAD"],"domain":null},"admin.company.listcompany.index":{"uri":"en\/backend\/company\/listcompanies","methods":["GET","HEAD"],"domain":null},"admin.company.listcompany.create":{"uri":"en\/backend\/company\/listcompanies\/create","methods":["POST"],"domain":null},"admin.company.listcompany.store":{"uri":"en\/backend\/company\/listcompanies","methods":["POST"],"domain":null},"admin.company.listcompany.edit":{"uri":"en\/backend\/company\/listcompanies\/{listcompany}\/edit","methods":["GET","HEAD"],"domain":null},"admin.company.listcompany.update":{"uri":"en\/backend\/company\/listcompanies\/{listcompany}","methods":["PUT"],"domain":null},"admin.company.listcompany.destroy":{"uri":"en\/backend\/company\/listcompanies\/{listcompany}","methods":["DELETE"],"domain":null},"admin.company.report.index":{"uri":"en\/backend\/company\/reports","methods":["GET","HEAD"],"domain":null},"admin.company.report.create":{"uri":"en\/backend\/company\/reports\/create","methods":["GET","HEAD"],"domain":null},"admin.company.report.store":{"uri":"en\/backend\/company\/reports","methods":["POST"],"domain":null},"admin.company.report.edit":{"uri":"en\/backend\/company\/reports\/{report}\/edit","methods":["GET","HEAD"],"domain":null},"admin.company.report.update":{"uri":"en\/backend\/company\/reports\/{report}","methods":["PUT"],"domain":null},"admin.company.report.destroy":{"uri":"en\/backend\/company\/reports\/{report}","methods":["DELETE"],"domain":null},"dashboard.index":{"uri":"en\/backend","methods":["GET","HEAD"],"domain":null},"dashboard.grid.save":{"uri":"en\/backend\/dashboard\/grid","methods":["POST"],"domain":null},"dashboard.grid.reset":{"uri":"en\/backend\/dashboard\/grid","methods":["GET","HEAD"],"domain":null},"admin.form.categoryform.index":{"uri":"en\/backend\/form\/categoryforms","methods":["GET","HEAD"],"domain":null},"admin.form.categoryform.create":{"uri":"en\/backend\/form\/categoryforms\/create","methods":["GET","HEAD"],"domain":null},"admin.form.categoryform.store":{"uri":"en\/backend\/form\/categoryforms","methods":["POST"],"domain":null},"admin.form.categoryform.edit":{"uri":"en\/backend\/form\/categoryforms\/{categoryform}\/edit","methods":["GET","HEAD"],"domain":null},"admin.form.categoryform.update":{"uri":"en\/backend\/form\/categoryforms\/{categoryform}","methods":["PUT"],"domain":null},"admin.form.categoryform.destroy":{"uri":"en\/backend\/form\/categoryforms\/{categoryform}","methods":["DELETE"],"domain":null},"admin.form.listform.index":{"uri":"en\/backend\/form\/listforms","methods":["GET","HEAD"],"domain":null},"admin.form.listform.create":{"uri":"en\/backend\/form\/listforms\/create","methods":["GET","HEAD"],"domain":null},"admin.form.listform.store":{"uri":"en\/backend\/form\/listforms","methods":["POST"],"domain":null},"admin.form.listform.edit":{"uri":"en\/backend\/form\/listforms\/{listform}\/edit","methods":["GET","HEAD"],"domain":null},"admin.form.listform.update":{"uri":"en\/backend\/form\/listforms\/{listform}","methods":["PUT"],"domain":null},"admin.form.listform.destroy":{"uri":"en\/backend\/form\/listforms\/{listform}","methods":["DELETE"],"domain":null},"admin.form.companyform.index":{"uri":"en\/backend\/form\/companyforms","methods":["GET","HEAD"],"domain":null},"admin.form.companyform.viewphieu1":{"uri":"en\/backend\/form\/companyforms\/viewphieu1\/{id}","methods":["GET","HEAD"],"domain":null},"admin.form.companyform.viewphieu2":{"uri":"en\/backend\/form\/companyforms\/viewphieu2\/{id}","methods":["GET","HEAD"],"domain":null},"admin.form.companyform.create":{"uri":"en\/backend\/form\/companyforms\/create","methods":["GET","HEAD"],"domain":null},"admin.form.companyform.store":{"uri":"en\/backend\/form\/companyforms","methods":["POST"],"domain":null},"admin.form.companyform.edit":{"uri":"en\/backend\/form\/companyforms\/{companyform}\/edit","methods":["GET","HEAD"],"domain":null},"admin.form.companyform.update":{"uri":"en\/backend\/form\/companyforms\/{companyform}","methods":["PUT"],"domain":null},"admin.form.companyform.destroy":{"uri":"en\/backend\/form\/companyforms\/{companyform}","methods":["DELETE"],"domain":null},"admin.form.report.index":{"uri":"en\/backend\/form\/reports","methods":["GET","HEAD"],"domain":null},"admin.form.report.create":{"uri":"en\/backend\/form\/reports\/create","methods":["GET","HEAD"],"domain":null},"admin.form.report.store":{"uri":"en\/backend\/form\/reports","methods":["POST"],"domain":null},"admin.form.report.edit":{"uri":"en\/backend\/form\/reports\/{report}\/edit","methods":["GET","HEAD"],"domain":null},"admin.form.report.update":{"uri":"en\/backend\/form\/reports\/{report}","methods":["PUT"],"domain":null},"admin.form.report.destroy":{"uri":"en\/backend\/form\/reports\/{report}","methods":["DELETE"],"domain":null},"api.media.folders.all-nestable":{"uri":"en\/api\/folder","methods":["GET","HEAD"],"domain":null},"api.media.folders.store":{"uri":"en\/api\/folder","methods":["POST"],"domain":null},"api.media.folders.breadcrumb":{"uri":"en\/api\/folder\/breadcrumb\/{folder}","methods":["GET","HEAD"],"domain":null},"api.media.folders.update":{"uri":"en\/api\/folder\/{folder}","methods":["POST"],"domain":null},"api.media.folders.destroy":{"uri":"en\/api\/folder\/{folder}","methods":["DELETE"],"domain":null},"api.media.store":{"uri":"en\/api\/file","methods":["POST"],"domain":null},"api.media.store-dropzone":{"uri":"en\/api\/file-dropzone","methods":["POST"],"domain":null},"api.media.link":{"uri":"en\/api\/media\/link","methods":["POST"],"domain":null},"api.media.unlink":{"uri":"en\/api\/media\/unlink","methods":["POST"],"domain":null},"api.media.media.move":{"uri":"en\/api\/media\/move","methods":["POST"],"domain":null},"api.media.all":{"uri":"en\/api\/media\/all","methods":["GET","HEAD"],"domain":null},"api.media.all-vue":{"uri":"en\/api\/media\/all-vue","methods":["GET","HEAD"],"domain":null},"api.media.sort":{"uri":"en\/api\/media\/sort","methods":["POST"],"domain":null},"api.media.find-first-by-zone-and-entity":{"uri":"en\/api\/media\/find-first-by-zone-and-entity","methods":["GET","HEAD"],"domain":null},"api.media.get-by-zone-and-entity":{"uri":"en\/api\/media\/get-by-zone-and-entity","methods":["GET","HEAD"],"domain":null},"api.media.media.find":{"uri":"en\/api\/media\/{media}","methods":["GET","HEAD"],"domain":null},"api.media.media.update":{"uri":"en\/api\/file\/{file}","methods":["PUT"],"domain":null},"api.media.media.destroy":{"uri":"en\/api\/file\/{file}","methods":["DELETE"],"domain":null},"api.media.media.batch-destroy":{"uri":"en\/api\/batch-destroy","methods":["POST"],"domain":null},"admin.media.media.index":{"uri":"en\/backend\/media\/media","methods":["GET","HEAD"],"domain":null},"admin.media.media.create":{"uri":"en\/backend\/media\/media\/create","methods":["GET","HEAD"],"domain":null},"admin.media.media.store":{"uri":"en\/backend\/media\/media","methods":["POST"],"domain":null},"admin.media.media.edit":{"uri":"en\/backend\/media\/media\/{media}\/edit","methods":["GET","HEAD"],"domain":null},"admin.media.media.update":{"uri":"en\/backend\/media\/media\/{media}","methods":["PUT"],"domain":null},"admin.media.media.destroy":{"uri":"en\/backend\/media\/media\/{media}","methods":["DELETE"],"domain":null},"media.grid.select":{"uri":"en\/backend\/media\/media-grid\/index","methods":["GET","HEAD"],"domain":null},"media.grid.ckeditor":{"uri":"en\/backend\/media\/media-grid\/ckIndex","methods":["GET","HEAD"],"domain":null},"api.menuitem.update":{"uri":"en\/api\/menuitem\/update","methods":["POST"],"domain":null},"api.menuitem.delete":{"uri":"en\/api\/menuitem\/delete","methods":["POST"],"domain":null},"admin.menu.menu.index":{"uri":"en\/backend\/menu\/menus","methods":["GET","HEAD"],"domain":null},"admin.menu.menu.create":{"uri":"en\/backend\/menu\/menus\/create","methods":["GET","HEAD"],"domain":null},"admin.menu.menu.store":{"uri":"en\/backend\/menu\/menus","methods":["POST"],"domain":null},"admin.menu.menu.edit":{"uri":"en\/backend\/menu\/menus\/{menu}\/edit","methods":["GET","HEAD"],"domain":null},"admin.menu.menu.update":{"uri":"en\/backend\/menu\/menus\/{menu}","methods":["PUT"],"domain":null},"admin.menu.menu.destroy":{"uri":"en\/backend\/menu\/menus\/{menu}","methods":["DELETE"],"domain":null},"dashboard.menuitem.index":{"uri":"en\/backend\/menu\/menus\/{menu}\/menuitem","methods":["GET","HEAD"],"domain":null},"dashboard.menuitem.create":{"uri":"en\/backend\/menu\/menus\/{menu}\/menuitem\/create","methods":["GET","HEAD"],"domain":null},"dashboard.menuitem.store":{"uri":"en\/backend\/menu\/menus\/{menu}\/menuitem","methods":["POST"],"domain":null},"dashboard.menuitem.edit":{"uri":"en\/backend\/menu\/menus\/{menu}\/menuitem\/{menuitem}\/edit","methods":["GET","HEAD"],"domain":null},"dashboard.menuitem.update":{"uri":"en\/backend\/menu\/menus\/{menu}\/menuitem\/{menuitem}","methods":["PUT"],"domain":null},"dashboard.menuitem.destroy":{"uri":"en\/backend\/menu\/menus\/{menu}\/menuitem\/{menuitem}","methods":["DELETE"],"domain":null},"dashboard.module.settings":{"uri":"en\/backend\/setting\/settings\/{module}","methods":["GET","HEAD"],"domain":null},"admin.setting.settings.index":{"uri":"en\/backend\/setting\/settings","methods":["GET","HEAD"],"domain":null},"admin.setting.settings.store":{"uri":"en\/backend\/setting\/settings","methods":["POST"],"domain":null},"api.tag.tag.by-namespace":{"uri":"en\/api\/tags\/namespace","methods":["GET","HEAD"],"domain":null},"admin.tag.tag.index":{"uri":"en\/backend\/tag\/tags","methods":["GET","HEAD"],"domain":null},"admin.tag.tag.create":{"uri":"en\/backend\/tag\/tags\/create","methods":["GET","HEAD"],"domain":null},"admin.tag.tag.store":{"uri":"en\/backend\/tag\/tags","methods":["POST"],"domain":null},"admin.tag.tag.edit":{"uri":"en\/backend\/tag\/tags\/{tag__tag}\/edit","methods":["GET","HEAD"],"domain":null},"admin.tag.tag.update":{"uri":"en\/backend\/tag\/tags\/{tag__tag}","methods":["PUT"],"domain":null},"admin.tag.tag.destroy":{"uri":"en\/backend\/tag\/tags\/{tag__tag}","methods":["DELETE"],"domain":null},"api.user.role.index":{"uri":"en\/api\/user\/roles","methods":["GET","HEAD"],"domain":null},"api.user.role.all":{"uri":"en\/api\/user\/roles\/all","methods":["GET","HEAD"],"domain":null},"api.user.role.store":{"uri":"en\/api\/user\/roles","methods":["POST"],"domain":null},"api.user.role.find":{"uri":"en\/api\/user\/roles\/find\/{role}","methods":["POST"],"domain":null},"api.user.role.find-new":{"uri":"en\/api\/user\/roles\/find-new","methods":["POST"],"domain":null},"api.user.role.update":{"uri":"en\/api\/user\/roles\/{role}\/edit","methods":["POST"],"domain":null},"api.user.role.destroy":{"uri":"en\/api\/user\/roles\/{role}","methods":["DELETE"],"domain":null},"api.user.user.index":{"uri":"en\/api\/user\/users","methods":["GET","HEAD"],"domain":null},"api.user.user.store":{"uri":"en\/api\/user\/users","methods":["POST"],"domain":null},"api.user.user.find":{"uri":"en\/api\/user\/users\/find\/{user}","methods":["POST"],"domain":null},"api.user.user.find-new":{"uri":"en\/api\/user\/users\/find-new","methods":["POST"],"domain":null},"api.user.user.update":{"uri":"en\/api\/user\/users\/{user}\/edit","methods":["POST"],"domain":null},"api.user.user.sendResetPassword":{"uri":"en\/api\/user\/users\/{user}\/sendResetPassword","methods":["GET","HEAD"],"domain":null},"api.user.user.destroy":{"uri":"en\/api\/user\/users\/{user}","methods":["DELETE"],"domain":null},"api.account.profile.find-current-user":{"uri":"en\/api\/user\/account\/profile","methods":["GET","HEAD"],"domain":null},"api.account.profile.update":{"uri":"en\/api\/user\/account\/profile","methods":["POST"],"domain":null},"api.account.api.index":{"uri":"en\/api\/user\/account\/api-keys","methods":["GET","HEAD"],"domain":null},"api.account.api.create":{"uri":"en\/api\/user\/account\/api-keys\/create","methods":["GET","HEAD"],"domain":null},"api.account.api.destroy":{"uri":"en\/api\/user\/account\/api-keys\/{userTokenId}","methods":["DELETE"],"domain":null},"api.user.permissions.index":{"uri":"en\/api\/user\/permissions","methods":["GET","HEAD"],"domain":null},"admin.user.user.index":{"uri":"en\/backend\/user\/users","methods":["GET","HEAD"],"domain":null},"admin.user.user.create":{"uri":"en\/backend\/user\/users\/create","methods":["GET","HEAD"],"domain":null},"admin.user.user.store":{"uri":"en\/backend\/user\/users","methods":["POST"],"domain":null},"admin.user.user.edit":{"uri":"en\/backend\/user\/users\/{users}\/edit","methods":["GET","HEAD"],"domain":null},"admin.user.user.update":{"uri":"en\/backend\/user\/users\/{users}\/edit","methods":["PUT"],"domain":null},"admin.user.user.sendResetPassword":{"uri":"en\/backend\/user\/users\/{users}\/sendResetPassword","methods":["GET","HEAD"],"domain":null},"admin.user.user.destroy":{"uri":"en\/backend\/user\/users\/{users}","methods":["DELETE"],"domain":null},"admin.user.role.index":{"uri":"en\/backend\/user\/roles","methods":["GET","HEAD"],"domain":null},"admin.user.role.create":{"uri":"en\/backend\/user\/roles\/create","methods":["GET","HEAD"],"domain":null},"admin.user.role.store":{"uri":"en\/backend\/user\/roles","methods":["POST"],"domain":null},"admin.user.role.edit":{"uri":"en\/backend\/user\/roles\/{roles}\/edit","methods":["GET","HEAD"],"domain":null},"admin.user.role.update":{"uri":"en\/backend\/user\/roles\/{roles}\/edit","methods":["PUT"],"domain":null},"admin.user.role.destroy":{"uri":"en\/backend\/user\/roles\/{roles}","methods":["DELETE"],"domain":null},"admin.account.profile.edit":{"uri":"en\/backend\/account\/profile","methods":["GET","HEAD"],"domain":null},"admin.account.profile.update":{"uri":"en\/backend\/account\/profile","methods":["PUT"],"domain":null},"admin.account.api.index":{"uri":"en\/backend\/account\/api-keys","methods":["GET","HEAD"],"domain":null},"admin.account.api.create":{"uri":"en\/backend\/account\/api-keys\/create","methods":["GET","HEAD"],"domain":null},"admin.account.api.destroy":{"uri":"en\/backend\/account\/api-keys\/{userTokenId}","methods":["DELETE"],"domain":null},"login":{"uri":"en\/auth\/login","methods":["GET","HEAD"],"domain":null},"login.post":{"uri":"en\/auth\/login","methods":["POST"],"domain":null},"register":{"uri":"en\/auth\/register","methods":["GET","HEAD"],"domain":null},"register.post":{"uri":"en\/auth\/register","methods":["POST"],"domain":null},"reset":{"uri":"en\/auth\/reset","methods":["GET","HEAD"],"domain":null},"reset.post":{"uri":"en\/auth\/reset","methods":["POST"],"domain":null},"reset.complete":{"uri":"en\/auth\/reset\/{id}\/{code}","methods":["GET","HEAD"],"domain":null},"reset.complete.post":{"uri":"en\/auth\/reset\/{id}\/{code}","methods":["POST"],"domain":null},"logout":{"uri":"en\/auth\/logout","methods":["GET","HEAD"],"domain":null},"admin.usercompany.profilecompany.index":{"uri":"en\/backend\/usercompany\/profilecompanies","methods":["GET","HEAD"],"domain":null},"admin.usercompany.profilecompany.create":{"uri":"en\/backend\/usercompany\/profilecompanies\/create","methods":["GET","HEAD"],"domain":null},"admin.usercompany.profilecompany.store":{"uri":"en\/backend\/usercompany\/profilecompanies","methods":["POST"],"domain":null},"admin.usercompany.profilecompany.edit":{"uri":"en\/backend\/usercompany\/profilecompanies\/{profilecompany}\/edit","methods":["GET","HEAD"],"domain":null},"admin.usercompany.profilecompany.update":{"uri":"en\/backend\/usercompany\/profilecompanies\/{profilecompany}","methods":["PUT"],"domain":null},"admin.usercompany.profilecompany.destroy":{"uri":"en\/backend\/usercompany\/profilecompanies\/{profilecompany}","methods":["DELETE"],"domain":null},"admin.usercompany.formcompany.index":{"uri":"en\/backend\/usercompany\/formcompanies","methods":["GET","HEAD"],"domain":null},"admin.usercompany.formcompany.create":{"uri":"en\/backend\/usercompany\/formcompanies\/create","methods":["GET","HEAD"],"domain":null},"admin.usercompany.formcompany.store":{"uri":"en\/backend\/usercompany\/formcompanies","methods":["POST"],"domain":null},"admin.usercompany.formcompany.phieu1":{"uri":"en\/backend\/usercompany\/formcompanies\/phieu1\/{id}","methods":["GET","HEAD"],"domain":null},"admin.usercompany.formcompany.phieu2":{"uri":"en\/backend\/usercompany\/formcompanies\/phieu2\/{id}","methods":["GET","HEAD"],"domain":null},"admin.usercompany.formcompany.edit":{"uri":"en\/backend\/usercompany\/formcompanies\/{formcompany}\/edit","methods":["GET","HEAD"],"domain":null},"admin.usercompany.formcompany.update":{"uri":"en\/backend\/usercompany\/formcompanies\/{formcompany}","methods":["PUT"],"domain":null},"admin.usercompany.formcompany.editPhieu2":{"uri":"en\/backend\/usercompany\/formcompanies\/{formcompanyphieu2}\/editPhieu2","methods":["GET","HEAD"],"domain":null},"admin.usercompany.formcompany.updatePhieu2":{"uri":"en\/backend\/usercompany\/formcompanies\/{formcompanyphieu2}","methods":["PUT"],"domain":null},"admin.usercompany.formcompany.destroy":{"uri":"en\/backend\/usercompany\/formcompanies\/{formcompany}","methods":["DELETE"],"domain":null},"admin.usercompany.notify.index":{"uri":"en\/backend\/usercompany\/notifies","methods":["GET","HEAD"],"domain":null},"admin.usercompany.notify.create":{"uri":"en\/backend\/usercompany\/notifies\/create","methods":["GET","HEAD"],"domain":null},"admin.usercompany.notify.store":{"uri":"en\/backend\/usercompany\/notifies","methods":["POST"],"domain":null},"admin.usercompany.notify.edit":{"uri":"en\/backend\/usercompany\/notifies\/{notify}\/edit","methods":["GET","HEAD"],"domain":null},"admin.usercompany.notify.update":{"uri":"en\/backend\/usercompany\/notifies\/{notify}","methods":["PUT"],"domain":null},"admin.usercompany.notify.destroy":{"uri":"en\/backend\/usercompany\/notifies\/{notify}","methods":["DELETE"],"domain":null},"admin.usercompany.manageform.index":{"uri":"en\/backend\/usercompany\/manageforms","methods":["GET","HEAD"],"domain":null},"admin.usercompany.manageform.create":{"uri":"en\/backend\/usercompany\/manageforms\/create","methods":["GET","HEAD"],"domain":null},"admin.usercompany.manageform.store":{"uri":"en\/backend\/usercompany\/manageforms","methods":["POST"],"domain":null},"admin.usercompany.manageform.edit":{"uri":"en\/backend\/usercompany\/manageforms\/{manageform}\/edit","methods":["GET","HEAD"],"domain":null},"admin.usercompany.manageform.update":{"uri":"en\/backend\/usercompany\/manageforms\/{manageform}","methods":["PUT"],"domain":null},"admin.usercompany.manageform.destroy":{"uri":"en\/backend\/usercompany\/manageforms\/{manageform}","methods":["DELETE"],"domain":null},"admin.usercompany.manageform.phieu1PDF":{"uri":"en\/backend\/usercompany\/manageforms\/phieu1PDF\/{id}","methods":["GET","HEAD"],"domain":null},"admin.usercompany.manageform.pdf":{"uri":"en\/backend\/usercompany\/manageforms\/pdf\/{id}","methods":["GET","HEAD"],"domain":null},"api.workshop.module.publish":{"uri":"en\/api\/workshop\/modules\/{module}\/publish","methods":["POST"],"domain":null},"api.workshop.theme.publish":{"uri":"en\/api\/workshop\/themes\/{theme}\/publish","methods":["POST"],"domain":null},"admin.workshop.modules.index":{"uri":"en\/backend\/workshop\/modules","methods":["GET","HEAD"],"domain":null},"admin.workshop.modules.show":{"uri":"en\/backend\/workshop\/modules\/{module}","methods":["GET","HEAD"],"domain":null},"admin.workshop.modules.update":{"uri":"en\/backend\/workshop\/modules\/update","methods":["POST"],"domain":null},"admin.workshop.modules.disable":{"uri":"en\/backend\/workshop\/modules\/disable\/{module}","methods":["POST"],"domain":null},"admin.workshop.modules.enable":{"uri":"en\/backend\/workshop\/modules\/enable\/{module}","methods":["POST"],"domain":null},"admin.workshop.themes.index":{"uri":"en\/backend\/workshop\/themes","methods":["GET","HEAD"],"domain":null},"admin.workshop.themes.show":{"uri":"en\/backend\/workshop\/themes\/{theme}","methods":["GET","HEAD"],"domain":null},"api.translation.translations.update":{"uri":"en\/api\/translation\/update","methods":["POST"],"domain":null},"api.translation.translations.clearCache":{"uri":"en\/api\/translation\/clearCache","methods":["POST"],"domain":null},"api.translation.translations.revisions":{"uri":"en\/api\/translation\/revisions","methods":["POST"],"domain":null},"api.translation.translations.all":{"uri":"en\/api\/translation","methods":["GET","HEAD"],"domain":null},"admin.translation.translation.index":{"uri":"en\/backend\/translation\/translations","methods":["GET","HEAD"],"domain":null},"admin.translation.translation.update":{"uri":"en\/backend\/translation\/translations\/update\/{translations}","methods":["GET","HEAD"],"domain":null},"admin.translation.translation.export":{"uri":"en\/backend\/translation\/translations\/export","methods":["GET","HEAD"],"domain":null},"admin.translation.translation.import":{"uri":"en\/backend\/translation\/translations\/import","methods":["POST"],"domain":null},"api.page.page.index":{"uri":"en\/api\/page\/pages","methods":["GET","HEAD"],"domain":null},"api.page.page.indexServerSide":{"uri":"en\/api\/page\/pages-server-side","methods":["GET","HEAD"],"domain":null},"api.page.page.mark-status":{"uri":"en\/api\/page\/mark-pages-status","methods":["GET","HEAD"],"domain":null},"api.page.page.destroy":{"uri":"en\/api\/page\/pages\/{page}","methods":["DELETE"],"domain":null},"api.page.page.store":{"uri":"en\/api\/page\/pages","methods":["POST"],"domain":null},"api.page.page.find":{"uri":"en\/api\/page\/pages\/{page}","methods":["POST"],"domain":null},"api.page.page.update":{"uri":"en\/api\/page\/pages\/{page}\/edit","methods":["POST"],"domain":null},"api.page.page-templates.index":{"uri":"en\/api\/page\/templates","methods":["GET","HEAD"],"domain":null},"admin.page.page.index":{"uri":"en\/backend\/page\/pages","methods":["GET","HEAD"],"domain":null},"admin.page.page.create":{"uri":"en\/backend\/page\/pages\/create","methods":["GET","HEAD"],"domain":null},"admin.page.page.store":{"uri":"en\/backend\/page\/pages","methods":["POST"],"domain":null},"admin.page.page.edit":{"uri":"en\/backend\/page\/pages\/{page}\/edit","methods":["GET","HEAD"],"domain":null},"admin.page.page.update":{"uri":"en\/backend\/page\/pages\/{page}\/edit","methods":["PUT"],"domain":null},"admin.page.page.destroy":{"uri":"en\/backend\/page\/pages\/{page}","methods":["DELETE"],"domain":null},"homepage":{"uri":"en","methods":["GET","HEAD"],"domain":null},"page":{"uri":"en\/{uri}","methods":["GET","HEAD","POST","PUT","PATCH","DELETE","OPTIONS"],"domain":null}};
+
+        for (var name in routes) {
+            Ziggy.namedRoutes[name] = routes[name];
+        }
+    })();
+</script></head>
+<body class="skin-blue sidebar-mini" style="padding-bottom: 0 !important;">
+<div class="wrapper" id="app">
+    <header class="main-header">
+        <a href="http://localhost/soctdl/public/en/backend" class="logo">
+            <span class="logo-mini">
+                Sở Công Thương Đà Lạt            </span>
+            <span class="logo-lg">
+                Sở Công Thương            </span>
+        </a>
+        <!-- Header Navbar: style can be found in header.less -->
+<nav class="navbar navbar-static-top" role="navigation">
+    <!-- Sidebar toggle button-->
+    <a href="#" class="navbar-btn sidebar-toggle" data-toggle="push-menu" role="button" style="margin: 0;">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </a>
+
+    <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+                        <li>
+                <a href="" class="publicUrl" style="display: none">
+                    <i class="fa fa-eye"></i> View page
+                </a>
+            </li>
+            <li><a href="http://localhost/soctdl/public"><i class="fa fa-eye"></i> View Website</a></li>
+                        <!-- User Account: style can be found in dropdown.less -->
+            <li class="dropdown user user-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <i class="glyphicon glyphicon-user"></i>
+                    <span>
+                                                    admin admin
+                                                <i class="caret"></i>
+                    </span>
+                </a>
+                <ul class="dropdown-menu">
+                    <!-- User image -->
+                    <li class="user-header bg-light-blue">
+                        <img src="https://www.gravatar.com/avatar/2c7b825e4faefb1b7101cb701ab57c17?s=90" class="img-circle" alt="User Image" />
+                        <p>
+                                                            admin admin
+                                                    </p>
+                    </li>
+                    <!-- Menu Footer-->
+                    <li class="user-footer">
+                        <div class="pull-left">
+                            <a href="http://localhost/soctdl/public/en/backend/account/profile" class="btn btn-default btn-flat">
+                                Profile
+                            </a>
+                        </div>
+                        <div class="pull-right">
+                            <a href="http://localhost/soctdl/public/en/auth/logout" class="btn btn-danger btn-flat">
+                                Sign out
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+    </header>
+    <!-- Left side column. contains the logo and sidebar -->
+<aside class="main-sidebar sidebar-offcanvas">
+
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+        <ul class="sidebar-menu" data-widget="tree">
+            <li class="   clearfix">
+    <a href="http://localhost/soctdl/public/en/backend" class="" >
+        <i class="fa fa-dashboard"></i>
+        <span>Dashboard</span>
+
+        
+            </a>
+
+    
+    </li>
+
+
+            <li class="menu-title">Content</li>
+
+    <li class="  treeview  clearfix">
+    <a href="#" class="" >
+        <i class="fa fa-globe"></i>
+        <span>company::companies.title.companies</span>
+
+        
+        <i class="fa fa-angle-left pull-right"></i>    </a>
+
+    
+            <ul class="treeview-menu">
+                            <li class="   clearfix">
+    <a href="http://localhost/soctdl/public/en/backend/company/listcompanies" class=" hasAppend " >
+        <i class="fa fa-list"></i>
+        <span>Listcompany</span>
+
+        
+            </a>
+
+            <a title="" class="append pull-right" href="http://localhost/soctdl/public/en/backend/company/listcompanies/create">
+    <i class="fa fa-plus"></i>
+</a>
+
+    
+    </li>
+
+                            <li class="   clearfix">
+    <a href="http://localhost/soctdl/public/en/backend/company/reports" class=" hasAppend " >
+        <i class="fa fa-file-text"></i>
+        <span>Report</span>
+
+        
+            </a>
+
+            <a title="" class="append pull-right" href="http://localhost/soctdl/public/en/backend/company/reports/create">
+    <i class="fa fa-plus"></i>
+</a>
+
+    
+    </li>
+
+                    </ul>
+    </li>
+
+    <li class="  treeview  clearfix">
+    <a href="#" class="" >
+        <i class="fa fa-copy"></i>
+        <span>form::forms.title.forms</span>
+
+        
+        <i class="fa fa-angle-left pull-right"></i>    </a>
+
+    
+            <ul class="treeview-menu">
+                            <li class="   clearfix">
+    <a href="http://localhost/soctdl/public/en/backend/form/categoryforms" class=" hasAppend " >
+        <i class="fa fa-database"></i>
+        <span>Categoryform</span>
+
+        
+            </a>
+
+            <a title="" class="append pull-right" href="http://localhost/soctdl/public/en/backend/form/categoryforms/create">
+    <i class="fa fa-plus"></i>
+</a>
+
+    
+    </li>
+
+                            <li class="   clearfix">
+    <a href="http://localhost/soctdl/public/en/backend/form/listforms" class=" hasAppend " >
+        <i class="fa fa-list-ol"></i>
+        <span>Listform</span>
+
+        
+            </a>
+
+            <a title="" class="append pull-right" href="http://localhost/soctdl/public/en/backend/form/listforms/create">
+    <i class="fa fa-plus"></i>
+</a>
+
+    
+    </li>
+
+                            <li class="   clearfix">
+    <a href="http://localhost/soctdl/public/en/backend/form/companyforms" class=" hasAppend " >
+        <i class="fa fa-check-square-o"></i>
+        <span>Companyform</span>
+
+        
+            </a>
+
+            <a title="" class="append pull-right" href="http://localhost/soctdl/public/en/backend/form/companyforms/create">
+    <i class="fa fa-plus"></i>
+</a>
+
+    
+    </li>
+
+                            <li class="   clearfix">
+    <a href="http://localhost/soctdl/public/en/backend/form/reports" class=" hasAppend " >
+        <i class="fa fa-bar-chart"></i>
+        <span>Report</span>
+
+        
+            </a>
+
+            <a title="" class="append pull-right" href="http://localhost/soctdl/public/en/backend/form/reports/create">
+    <i class="fa fa-plus"></i>
+</a>
+
+    
+    </li>
+
+                    </ul>
+    </li>
+
+    <li class=" active  treeview  clearfix">
+    <a href="#" class="" >
+        <i class="fa fa-building"></i>
+        <span>usercompany::usercompanies.title.usercompanies</span>
+
+        
+        <i class="fa fa-angle-left pull-right"></i>    </a>
+
+    
+            <ul class="treeview-menu">
+                            <li class="   clearfix">
+    <a href="http://localhost/soctdl/public/en/backend/usercompany/profilecompanies" class=" hasAppend " >
+        <i class="fa fa-briefcase"></i>
+        <span>Profilecompany</span>
+
+        
+            </a>
+
+            <a title="" class="append pull-right" href="http://localhost/soctdl/public/en/backend/usercompany/profilecompanies/create">
+    <i class="fa fa-plus"></i>
+</a>
+
+    
+    </li>
+
+                            <li class="   clearfix">
+    <a href="http://localhost/soctdl/public/en/backend/usercompany/formcompanies" class=" hasAppend " >
+        <i class="fa fa-pencil-square-o"></i>
+        <span>Formcompany</span>
+
+        
+            </a>
+
+            <a title="" class="append pull-right" href="http://localhost/soctdl/public/en/backend/usercompany/formcompanies/create">
+    <i class="fa fa-plus"></i>
+</a>
+
+    
+    </li>
+
+                            <li class="   clearfix">
+    <a href="http://localhost/soctdl/public/en/backend/usercompany/notifies" class=" hasAppend " >
+        <i class="fa fa-bell"></i>
+        <span>Notify</span>
+
+        
+            </a>
+
+            <a title="" class="append pull-right" href="http://localhost/soctdl/public/en/backend/usercompany/notifies/create">
+    <i class="fa fa-plus"></i>
+</a>
+
+    
+    </li>
+
+                            <li class=" active   clearfix">
+    <a href="http://localhost/soctdl/public/en/backend/usercompany/manageforms" class=" hasAppend " >
+        <i class="fa fa-check-square"></i>
+        <span>Manageform</span>
+
+        
+            </a>
+
+            <a title="" class="append pull-right" href="http://localhost/soctdl/public/en/backend/usercompany/manageforms/create">
+    <i class="fa fa-plus"></i>
+</a>
+
+    
+    </li>
+
+                    </ul>
+    </li>
+
+    <li class="   clearfix">
+    <a href="http://localhost/soctdl/public/en/backend/page/pages" class="" >
+        <i class="fa fa-file"></i>
+        <span>Pages</span>
+
+        
+            </a>
+
+    
+    </li>
+
+    <li class="   clearfix">
+    <a href="http://localhost/soctdl/public/en/backend/block/blocks" class=" hasAppend " >
+        <i class="fa fa-cube"></i>
+        <span>Blocks</span>
+
+        
+            </a>
+
+            <a title="" class="append pull-right" href="http://localhost/soctdl/public/en/backend/block/blocks/create">
+    <i class="fa fa-plus"></i>
+</a>
+
+    
+    </li>
+
+    
+    <li class="   clearfix">
+    <a href="http://localhost/soctdl/public/en/backend/media/media" class="" >
+        <i class="fa fa-camera"></i>
+        <span>Media</span>
+
+        
+            </a>
+
+    
+    </li>
+
+    <li class="   clearfix">
+    <a href="http://localhost/soctdl/public/en/backend/menu/menus" class="" >
+        <i class="fa fa-bars"></i>
+        <span>Menu</span>
+
+        
+            </a>
+
+    
+    </li>
+
+    <li class="   clearfix">
+    <a href="http://localhost/soctdl/public/en/backend/translation/translations" class="" >
+        <i class="fa fa-globe"></i>
+        <span>Translations</span>
+
+        
+            </a>
+
+    
+    </li>
+
+    <li class="   clearfix">
+    <a href="http://localhost/soctdl/public/en/backend/tag/tags" class="" >
+        <i class="fa fa-tag"></i>
+        <span>Tags</span>
+
+        
+            </a>
+
+    
+    </li>
+
+
+            <li class="menu-title">Workshop</li>
+
+    <li class="  treeview  clearfix">
+    <a href="#" class="" >
+        <i class="fa fa-users"></i>
+        <span>Users</span>
+
+        
+        <i class="fa fa-angle-left pull-right"></i>    </a>
+
+    
+            <ul class="treeview-menu">
+                            <li class="   clearfix">
+    <a href="http://localhost/soctdl/public/en/backend/user/users" class="" >
+        <i class="fa fa-users"></i>
+        <span>Users</span>
+
+        
+            </a>
+
+    
+    </li>
+
+                            <li class="   clearfix">
+    <a href="http://localhost/soctdl/public/en/backend/user/roles" class="" >
+        <i class="fa fa-flag-o"></i>
+        <span>Roles</span>
+
+        
+            </a>
+
+    
+    </li>
+
+                    </ul>
+    </li>
+
+    <li class="   clearfix">
+    <a href="http://localhost/soctdl/public/en/backend/setting/settings" class="" >
+        <i class="fa fa-cog"></i>
+        <span>Settings</span>
+
+        
+            </a>
+
+    
+    </li>
+
+    <li class="   clearfix">
+    <a href="http://localhost/soctdl/public/en/backend/workshop/modules" class="" >
+        <i class="fa fa-cogs"></i>
+        <span>Modules</span>
+
+        
+            </a>
+
+    
+    </li>
+
+    <li class="   clearfix">
+    <a href="http://localhost/soctdl/public/en/backend/workshop/themes" class="" >
+        <i class="fa fa-cogs"></i>
+        <span>Themes</span>
+
+        
+            </a>
+
+    
+    </li>
+
+
+            <li class="menu-title">My Account</li>
+
+    <li class="   clearfix">
+    <a href="http://localhost/soctdl/public/en/backend/account/profile" class="" >
+        <i class="fa fa-user"></i>
+        <span>Profile</span>
+
+        
+            </a>
+
+    
+    </li>
+
+    <li class="   clearfix">
+    <a href="http://localhost/soctdl/public/en/backend/account/api-keys" class="" >
+        <i class="fa fa-key"></i>
+        <span>Api Keys</span>
+
+        
+            </a>
+
+    
+    </li>
+
+
+    </ul>
+
+    </section>
+    <!-- /.sidebar -->
+</aside>
+
+    <aside class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+                <h1>
+        Phiếu khảo sát 1
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="http://localhost/soctdl/public/en/backend"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="http://localhost/soctdl/public/en/backend/form/listforms">Listform</a></li>
+        <li class="active">Phiếu khảo sát 1</li>
+        <a href="http://localhost/soctdl/public/en/backend/usercompany/manageforms/pdf/41"> xuất file pdf</a>
+    </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+                            
+    <form method="POST" action="http://localhost/soctdl/public/en/backend/usercompany/formcompanies/41" accept-charset="UTF-8"><input name="_method" type="hidden" value="PUT"><input name="_token" type="hidden" value="k88okEDYa5g2DxQQbxRLthjVb6hWW2qoseecuqy2">
+    <input type="hidden" name="_token" value="k88okEDYa5g2DxQQbxRLthjVb6hWW2qoseecuqy2">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="nav-tabs-custom usercompanies-phieu1">
+                                                <div class="tab-content">
+                    <input hidden="" type="text" name="id_doanh_nghiep" value="1">
+                    <input hidden="" type="text" name="id_phieu_khao_sat" value="41">
+                    <input type="text" placeholder="Điền vào đây..." name="phieu1" value="phieu1" hidden="">
+                  
+                  <p class="MsoNormal" style="text-align: center; line-height: normal; margin: 3.0pt 0in 3.0pt 0in;" align="center"><strong style="mso-bidi-font-weight: normal;"><span>PHIẾU 1. THU THẬP TH&Ocirc;NG TIN T&Igrave;NH H&Igrave;NH SẢN XUẤT V&Agrave; THỰC HIỆN </span></strong></p>
+                  <p class="MsoNormal" style="text-align: center; line-height: normal; margin: 3.0pt 0in 3.0pt 0in;" align="center"><strong style="mso-bidi-font-weight: normal;"><span>C&Aacute;C THỦ TỤC BẢO VỆ M&Ocirc;I TRƯỜNG NG&Agrave;NH C&Ocirc;NG THƯƠNG</span></strong></p>
+                  <p class="MsoNormal" style="line-height: normal; margin: 3.0pt 0in 3.0pt 0in;"><span>Nhằm thu thập th&ocirc;ng tin cho việc x&acirc;y dựng phần mềm hỗ trợ Sở C&ocirc;ng thương tỉnh L&acirc;m Đồng quản l&yacute; c&ocirc;ng t&aacute;c bảo vệ m&ocirc;i trường tại 06 cụm c&ocirc;ng nghiệp tr&ecirc;n địa b&agrave;n Tỉnh. Ch&uacute;ng t&ocirc;i rất mong nhận được sự hợp t&aacute;c của &Ocirc;ng/B&agrave; trong việc ho&agrave;n th&agrave;nh phiếu khảo s&aacute;t sau.</span></p>
+                  <p class="MsoNormal" style="line-height: normal; margin: 3.0pt 0in 3.0pt 0in;"><span>Nội dung trả lời của &Ocirc;ng/B&agrave; l&agrave; những th&ocirc;ng tin qu&yacute; b&aacute;u gi&uacute;p ch&uacute;ng t&ocirc;i ho&agrave;n th&agrave;nh cơ sở dữ liệu cho phần mềm n&ecirc;u tr&ecirc;n, những th&ocirc;ng tin &Ocirc;ng/B&agrave; cung cấp chỉ được sử dụng cho mục đ&iacute;ch nghi&ecirc;n cứu v&agrave; đảm bảo t&iacute;nh bảo mật, kh&ocirc;ng tiết lộ ra b&ecirc;n ngo&agrave;i.</span></p>
+                  <div style="mso-element: para-border-div; border: none; border-bottom: solid windowtext 1.0pt; mso-border-bottom-alt: solid windowtext .5pt; padding: 0in 0in 1.0pt 0in;">
+                      <p class="MsoNormal" style="line-height: normal; border: none; mso-border-bottom-alt: solid windowtext .5pt; padding: 0in; mso-padding-alt: 0in 0in 1.0pt 0in; margin: 3.0pt 0in 3.0pt 0in;"><span>Ch&acirc;n th&agrave;nh cảm ơn sự hợp t&aacute;c v&agrave; gi&uacute;p đỡ của &Ocirc;ng/B&agrave;!</span></p>
+                  </div>
+                  
+                <p><strong>I. THÔNG TIN CHUNG VỀ CƠ SỞ</strong></p>
+                 <div class="container-fluid">
+                        <div class="col-md-12">
+                           <div class="tencoso">  <p>1  Tên cơ sở:</p>
+                              <input type="text" placeholder="Điền vào đây..." name="TenCoSo" value="dsfsdf"> 
+                           </div>
+                            <div class="tencoso">  <p>2 Địa chỉ trụ sở:</p>
+                              <input type="text" placeholder="Điền vào đây..." name="DiaChiTruSo" value=""> 
+                           </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="tencoso">   <p>3. Khu vực sản xuất: </p>
+                             <input type="text" placeholder="Điền vào đây..." name="KhuVucSanXuat" value=""> 
+                           </div>
+                        </div>
+                         <div class="col-md-6">
+                            <div class="tencoso">    <p>Địa chỉ nhà máy: </p>
+                             <input type="text" placeholder="Điền vào đây..." name="DiaChiNhaMay" value=""> 
+                           </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="tencoso">   <p>4. Email:  </p>
+                            <input type="text" placeholder="Điền vào đây..." name="Email" value="">  
+                           </div>
+                        </div>
+                         <div class="col-md-6">
+                            <div class="tencoso">    <p>Số điện thoại: </p>
+                            <input type="text" placeholder="Điền vào đây..." name="SDT" value="">
+                           </div>
+                        </div>
+                         <div class="col-md-6">
+                            <div class="tencoso">     <p>5 Diện tích mặt bằng:</p>
+                             <input type="text" placeholder="Điền vào đây..." name="DienTichMatBang" value="">
+                           </div>
+                        </div>
+                         <div class="col-md-6">
+                            <div class="tencoso">   <p>Toạ độ VN 2000:</p>
+                           <label>X: <input type="text" placeholder="Điền vào đây..." name="ToaDoX" value=""></label>
+                           <label>Y: <input type="text" placeholder="Điền vào đây..." name="ToaDoY" value=""></label>
+                           </div>
+                        </div>
+                         <div class="col-md-4">
+                            <div class="tencoso">     <p>6 Người đại diện:</p>
+                             <input type="text" placeholder="Điền vào đây..." name="NguoiDaiDien" value="">
+                           </div>
+                        </div>
+                         <div class="col-md-4">
+                            <div class="tencoso">    <p>Số điện thoại</p>
+                            <input type="text" placeholder="Điền vào đây..." name="SDTNguoiDaiDien" value="">
+                           </div>
+                        </div>
+                         <div class="col-md-4">
+                            <div class="tencoso">      <p>Email</p>
+                            <input type="text" placeholder="Điền vào đây..." name="EmailNguoiDaiDien" value="">
+                           </div>
+                        </div>
+                <table border="1" width="100%" cellspacing="0" cellpadding="0" class="table-1">
+                       <p>7 Giấy phép hoạt động:</p>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <p>Loại giấy phép</p>
+
+                            </td>
+                            <td>
+                                <p>Giấy chứng nhận đầu tư</p>
+                            </td>
+                            <td>
+                                <p>Giấy chứng nhận đăng ký KD</p>
+                            </td>
+                            <td>
+                                <p>Giấy phép đầu tư</p>
+                            </td>
+                            <td>
+                                <p>Quyết định thành lập</p>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>Năm cấp</p>
+
+                            </td>
+                            <td>
+                              <input type="text" placeholder="Điền vào đây..." name="GiayCNDT" value=""> 
+                            </td>
+                            <td>
+                               <input type="text" placeholder="Điền vào đây..." name="GiayCNDKKD" value=""> 
+                            </td>
+                            <td>
+                             <input type="text" placeholder="Điền vào đây..." name="GiayPhepDT" value=""> 
+                            </td>
+                            <td>
+                                <input type="text" placeholder="Điền vào đây..." name="GiayQDTL"value="">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+               <div class="table-check">
+                    <div class="tencoso">  
+                      <p>8 Thuộc danh mục cơ sở gây ô nhiễm môi trường nghiêm trọng:</p>
+                      <div class="click-radio">
+                        <p>Có</p> <input type="radio" name="CoSoONhiem" value="">
+                        <p>Không</p> <input type="radio" name="CoSoONhiem" value="">
+                        </div>
+                    </div>
+                </div>
+                <table border="0" width="100%" cellspacing="0" cellpadding="0" class="table-3" >
+                    <tbody>
+                        <tr>
+                            <td>
+                                <p>9 Họ tên người trả lời phiếu</p>
+                            </td>
+                            <td>
+                                <input type="text" placeholder="Điền vào đây..." name="NguoiTraLoi" value="">
+                            </td>
+                            <td>
+                                <p>Chức vụ:</p>
+                            </td>
+                            <td>
+                              <input type="text" placeholder="Điền vào đây..." name="ChucVuNguoiTraLoi" value=""> 
+                            </td>
+                            <td>
+                                <p>Số ĐT:</p>
+                            </td>
+                            <td>
+                              <input type="text" placeholder="Điền vào đây..." name="SDTNguoiTraLoi" value=""> 
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>    
+                    </div>   
+                  <div class="container-fluid phan-2">   
+                  
+                <h3>2. TÌNH HÌNH HOẠT ĐỘNG SẢN XUẤT CỦA CƠ SỞ</h3>
+                 <div class="col-md-12">
+                    <div class="tencoso">  <p>1 Loại hình sản xuất/kinh doanh:</p>
+                         <input type="text" placeholder="Điền vào đây..." name="LoaiHinhKD" value="">
+                      </div>
+                </div>
+                <div class="col-md-4 quymo">
+                   <p>2 Quy mô/công suất (sản phẩm/năm):</p>
+                </div>
+                 <div class="col-md-4">
+                    <div class="tencoso">   <p>Thiết kế</p>
+                         <input type="text" placeholder="Điền vào đây..." name="QuyMoThietKe" value="">
+                      </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="tencoso">    <p style="width: 9%">Thực tế</p>
+                       <input type="text" placeholder="Điền vào đây..." name="QuyMoThucTe" value=""> 
+                      </div>
+                </div>
+                 <div class="col-md-12">
+                    <div class="tencoso">     <p>3 Thời gian hoạt động:</p> 
+                      <input type="text" placeholder="Điền vào đây..." name="ThoiGianHD" value="">  <p>Ngày/năm</p>
+                      </div>
+                </div>
+                <div class="col-md-4 laodong">
+                   <p>4 Số lao động (người):</p>
+                </div>
+                 <div class="col-md-4">
+                    <div class="tencoso">    <p>Cố định</p>
+                        <input type="text" placeholder="Điền vào đây..." name="SoLDCoDinh" value="">
+                      </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="tencoso">  <p style="width: 9%">Thời vụ</p>
+                   <input type="text" placeholder="Điền vào đây..." name="SoLDThoiVu" value="">
+                      </div>
+                </div>
+               
+
+                  <table border="1" width="100%" cellspacing="0" cellpadding="0" class="table-1">
+                    <div class="col-md-12 title-full"> <p>5. Sản phẩm chính:</p></div>
+                      <tbody>
+                          <tr>
+                              <td valign="top" width="59%">
+                                  <p align="center">Tên sản phẩm</p>
+                              </td>
+                              <td valign="top" width="20%">
+                                  <p align="center">Đơn vị</p>
+                              </td>
+                              <td valign="top" width="19%">
+                                  <p align="center">Sản lượng</p>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td valign="top" width="59%">
+                                   <input type="text" placeholder="Điền vào đây..." name="txtTenSP1.5"> 
+                              </td>
+                              <td valign="top" width="20%">
+                                   <input type="text" placeholder="Điền vào đây..." name="txtDonVi1.5">
+                              </td>
+                              <td valign="top" width="19%">
+                                  <input type="text" placeholder="Điền vào đây..." name="txtSanLuong1.5">
+                              </td>
+                          </tr>
+                      </tbody>
+                  </table>
+                <table border="1" width="100%" cellspacing="0" cellpadding="0" class="table-1">
+                    <div class="col-md-12 title-full"> <p>6. Danh mục và khối lượng nguyên/vật liệu chính (trung bình tháng):</p></div>
+                    <tbody>
+                        <tr>
+                            <td valign="top" width="58%">
+                                <p align="center">Tên nguyên liệu</p>
+                            </td>
+                            <td valign="top" width="21%">
+                                <p align="center">Đơn vị</p>
+                            </td>
+                            <td valign="top" width="19%">
+                                <p align="center">Số lượng</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="top" width="58%">
+                              <input type="text" placeholder="Điền vào đây..." name="txtTenNguyenLieu" > 
+                            </td>
+                            <td valign="top" width="21%">
+                                <input type="text" placeholder="Điền vào đây..." name="txtDonVi" >
+                            </td>
+                            <td valign="top" width="19%">
+                              <input type="text" placeholder="Điền vào đây..." name="txtSanLuong1.6" >
+                            </td>
+                        </tr>
+                    </tbody>
+                  </table>
+
+                  
+                  <table border="1" width="100%" cellspacing="0" cellpadding="0" class="table-1">
+                    <div class="col-md-12 title-full"><p>7. Danh mục và khối lượng nhiên liệu chính (điện, gas, than, dầu…) – trung bình tháng:</p></div>
+                      <tbody>
+                          <tr>
+                              <td valign="top" width="58%">
+                                  <p align="center">Tên nhiên liệu</p>
+                              </td>
+                              <td valign="top" width="21%">
+                                  <p align="center">Đơn vị</p>
+                              </td>
+                              <td valign="top" width="19%">
+                                  <p align="center">Số lượng</p>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td valign="top" width="58%">
+                                 <input type="text" placeholder="Điền vào đây..." name="txtTenNhienLieu" > 
+                              </td>
+                              <td valign="top" width="21%">
+                                  <input type="text" placeholder="Điền vào đây..." name="txtDonVi1.7"> 
+                              </td>
+                              <td valign="top" width="19%">
+                                  <input type="text" placeholder="Điền vào đây..." name="txtSanLuong1.7">
+                              </td>
+                          </tr>
+                      </tbody>
+
+                  </table>
+ 
+                <p class="MsoListParagraph" style="text-indent: -.25in; line-height: normal; mso-list: l4 level1 lfo12; margin: 3.0pt 0in 3.0pt 21.3pt;">
+                    <span ><span style="mso-list: Ignore;">8<span style="font: 7.0pt 'Times New Roman';">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span>
+                    </span>
+                    <span>Lượng nước sử dụng (m<sup>3</sup>/th&aacute;ng): </span></p></p>
+                <p class="MsoListParagraph" style="line-height: normal; margin: 3.0pt 0in 3.0pt 21.3pt;"><span>Nước thuỷ cục</span> <input type="text" placeholder="Điền vào đây..." name="SoLDThoiVu">
+                    <span><span style="mso-no-proof: yes;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+
+                    </span>
+                    <span> <span style="mso-tab-count: 1;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Nước dưới đất<span style="mso-spacerun: yes;">&nbsp; </span></span><input type="text" placeholder="Điền vào đây..." name="NuocDuoiDat">
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <span> <span style="mso-spacerun: yes;">&nbsp;</span><span style="mso-tab-count: 1;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Nước mặt</span><input type="text" placeholder="Điền vào đây..." name="NuocMat">
+                    <span><span style="mso-no-proof: yes;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+
+                    </span>
+                </p>
+                <p class="MsoListParagraph MsoListParagraph-input" style="text-indent: -.25in; line-height: normal; mso-list: l4 level1 lfo12; margin: 3.0pt 0in 3.0pt 21.3pt;">
+                    <span ><span style="mso-list: Ignore;">9<span style="font: 7.0pt 'Times New Roman';">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span>
+                    </span>
+                    <span style="padding-right: 30px ">Công ty đang dự kiến thay đổi định hướng sản xuất trong năm năm tiếp theo (Đến năm 2025): </span>
+                    
+                    <span><span style="mso-spacerun: yes;">&nbsp;</span>Có<span style="mso-tab-count: 1;">&nbsp;&nbsp;&nbsp;&nbsp; </span></span><input type="radio" name="DuKienThayDoi">
+                    <span><span style="mso-spacerun: yes;">&nbsp;</span>Không</span>
+                    <input type="radio" name="DuKienThayDoi">
+                      </p>
+                <p class="MsoNormal" style="text-indent: 21.3pt; line-height: normal; tab-stops: 304.8pt; margin: 3.0pt 0in 3.0pt 0in;"><span>Nếu c&ocirc;ng ty c&oacute; định hướng thay đổi, &ocirc;ng/b&agrave; tiếp tục trả lời c&acirc;u 10, nếu kh&ocirc;ng vui l&ograve;ng chuyển tiếp đến mục III.</span></p>
+
+                  <p>10.  Định hướng phát triển sản xuất của doanh nghiệp đến năm 2025</p>
+                  <table border="1" width="100%" cellspacing="0" cellpadding="0" class="table-2">
+                    <tbody>
+                        <tr>
+                            <td width="31%">
+                                <p align="center">&nbsp;</p>
+                            </td>
+                            <td valign="top" width="11%">
+                                <p align="center">Thay đổi</p>
+                            </td>
+                            <td width="57%">
+                                <p align="center">Định hướng (dự kiến)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="31%">
+                                <p  class="p-title-10" align="left">Sản phẩm</p>
+                            </td>
+                            <td width="11%">
+                                <p class="radio-10"><input type="checkbox" name="SanPhamThayDoi" value=""></p>
+                            </td>
+                            <td width="57%">
+                                <p class="text-10"> <input type="text" placeholder="Điền vào đây..." name="SanPhamDuKien" value=""> </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="31%">
+                                <p  class="p-title-10" align="left">Loại hình sản xuất</p>
+                            </td>
+                            <td width="11%">
+                                <p class="radio-10"><input type="checkbox" name="LoaiHinhSXThayDoi" value=""></p>
+                            </td>
+                            <td width="57%">
+                                <p class="text-10"> <input type="text" placeholder="Điền vào đây..." name="LoaiHinhSXDuKien" value=""> </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="31%">
+                                <p  class="p-title-10" align="left">Quy mô/Công suất</p>
+                            </td>
+                            <td width="11%">
+                                <p class="radio-10"><input type="checkbox" name="QuyMoThayDoi" value=""></p>
+                            </td>
+                            <td width="57%">
+                                <p class="text-10"><input type="text" placeholder="Điền vào đây..." name="QuyMoDuKien" value=""></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="31%">
+                                <p  class="p-title-10" align="left">Công nghệ sản xuất</p>
+                            </td>
+                            <td width="11%">
+                                <p class="radio-10"><input type="checkbox" name="CongNgheThayDoi" value=""></p>
+                            </td>
+                            <td width="57%">
+                                <p class="text-10"><input type="text" placeholder="Điền vào đây..." name="CongNgheDuKien" value=""></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="31%">
+                                <p  class="p-title-10" align="left">Nguyên/nhiên/vật liệu</p>
+                            </td>
+                            <td width="11%">
+                                <p class="radio-10"><input type="checkbox" name="VatLieuThayDoi" value=""></p>
+                            </td>
+                            <td width="57%">
+                                <p class="text-10"><input type="text" placeholder="Điền vào đây..." name="VatLieuDuKien" value=""></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="31%">
+                               <div class="dinhhuong"> 
+                                <p  class="p-title-10" align="left">Định hướng khác: </p> 
+                                <input type="text" placeholder="Điền vào đây..." name="DinhHuongKhac" value="">
+                                </div>
+                            </td>
+                            <td width="11%">
+                                <p class="radio-10"><input type="checkbox" name="DinhHuongThayDoi" value=""></p>
+                            </td>
+                            <td width="57%">
+                                <p class="text-10"><input type="text" placeholder="Điền vào đây..." name="DinhHuongDuKien" value=""></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                  </table>
+
+                  <p>
+                      <strong>III.   TÌNH HÌNH THỰC HIỆN CÁC HỒ SƠ MÔI TRƯỜNG</strong></p>
+                  <p>1. Danh mục hồ sơ môi trường ban đầu đã thực hiện:</p>
+                  <table border="1" width="100%" cellspacing="0" cellpadding="0" class="table-2">
+                      <thead>
+                          <tr>
+                              <td width="39%">
+                                  <p align="center">Loại hồ sơ</p>
+                              </td>
+                              <td width="7%">
+                                  <p align="center">Có</p>
+                              </td>
+                              <td width="33%">
+                                  <p align="center">Số hiệu QĐ phê duyệt/<br>giấy xác nhận</p>
+                              </td>
+                              <td width="19%">
+                                  <p align="center">Ngày cấp</p>
+                              </td>
+                          </tr>
+                      </thead>
+                      <tbody>
+
+                          <tr>
+                              <td width="39%">
+                                  <p  class="p-title-10">Báo cáo  đánh giá tác động môi trường</p>
+                              </td>
+                              <td width="7%">
+                                  <p class="radio-10"><input type="checkbox" name="BaoCaoDGTDMTStatus" value=""></p>
+                              </td>
+                              <td width="33%">
+                                  <p class="text-10"><input type="text" placeholder="Điền vào đây..." name="BaoCaoDGTDMTSoHieu" value=""></p>
+                              </td>
+                              <td width="19%">
+                                  <p class="text-10"><input type="text" placeholder="Điền vào đây..." name="BaoCaoDGTDMTNgayCap" value=""></p>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td width="39%">
+                                  <p  class="p-title-10">Đề án bảo vệ môi trường chi tiết</p>
+                              </td>
+                              <td width="7%">
+                                  <p class="radio-10"><input type="checkbox" name="DeAnBVMTCTStatus" value=""></p>
+                              </td>
+                              <td width="33%">
+                                  <p class="text-10"><input type="text" placeholder="Điền vào đây..." name="DeAnBVMTCTSoHieu" value=""></p>
+                              </td>
+                              <td width="19%">
+                                  <p class="text-10"><input type="text" placeholder="Điền vào đây..." name="DeAnBVMTCTNgayCap" value=""></p>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td width="39%">
+                                  <p  class="p-title-10">Bản đăng ký đạt tiêu chuẩn môi trường</p>
+                              </td>
+                              <td width="7%">
+                                  <p class="radio-10"><input type="checkbox" name="DangKiDTCMTStatus" value=""></p>
+                              </td>
+                              <td width="33%">
+                                  <p class="text-10"><input type="text" placeholder="Điền vào đây..." name="DangKiDTCMTSoHieu" value=""></p>
+                              </td>
+                              <td width="19%">
+                                  <p class="text-10"><input type="text" placeholder="Điền vào đây..." name="DangKiDTCMTNgayCap" value=""></p>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td width="39%">
+                                  <p  class="p-title-10">Kế hoạch bảo vệ môi trường</p>
+                              </td>
+                              <td width="7%">
+                                  <p class="radio-10"><input type="checkbox" name="KeHoachBVMTStatus" value=""></p>
+                              </td>
+                              <td width="33%">
+                                  <p class="text-10"><input type="text" placeholder="Điền vào đây..." name="KeHoachBVMTSoHieu" value=""></p>
+                              </td>
+                              <td width="19%">
+                                  <p class="text-10"><input type="text" placeholder="Điền vào đây..." name="KeHoachBVMTNgayCap" value=""></p>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td width="39%">
+                                  <p  class="p-title-10">Đề án bảo vệ môi trường đơn giản</p>
+                              </td>
+                              <td width="7%">
+                                  <p class="radio-10"><input type="checkbox" name="DABVMTDonGianStatus" value=""></p>
+                              </td>
+                              <td width="33%">
+                                  <p class="text-10"><input type="text" placeholder="Điền vào đây..." name="DABVMTDonGianSoHieu" value=""></p>
+                              </td>
+                              <td width="19%">
+                                  <p class="text-10"><input type="text" placeholder="Điền vào đây..." name="DABVMTDonGianNgayCap" value=""></p>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td width="39%">
+                                  <p  class="p-title-10">Cam kết bảo vệ môi trường</p>
+                              </td>
+                              <td width="7%">
+                                  <p class="radio-10"><input type="checkbox" name="CamKetBVMTStatus" value=""></p>
+                              </td>
+                              <td width="33%">
+                                  <p class="text-10"><input type="text" placeholder="Điền vào đây..." name="CamKetBVMTSoHieu" value=""></p>
+                              </td>
+                              <td width="19%">
+                                  <p class="text-10"><input type="text" placeholder="Điền vào đây..." name="CamKetBVMTNgayCap" value=""></p>
+                              </td>
+                          </tr>
+                      </tbody>
+                  </table>
+  
+                  <p>2. Các hồ sơ/thủ tục môi trường thực hiện sau khi được <b><i >phê duyệt báo cáo đánh giá tác động môi trường/đề án bảo vệ môi trường chi tiết/bản đăng ký đạt tiêu chuẩn môi trường</i></b>:</p>
+                  <table border="1" width="100%" cellspacing="0" cellpadding="0" class="table-2">
+                      <thead style="font-weight: bold;">
+                          <tr>
+                              <td width="44%">
+                                  <p  align="center">Loại hồ sơ</p>
+                              </td>
+                              <td width="7%">
+                                  <p align="center">Có</p>
+                              </td>
+                              <td width="30%">
+                                  <p align="center">Số hiệu văn bản thông báo/<br>giấy xác nhận</p>
+                              </td>
+                              <td width="18%">
+                                  <p align="center">Ngày cấp</p>
+                              </td>
+                          </tr>
+                      </thead>
+                      <tbody>
+
+                          <tr>
+                              <td width="44%">
+                                  <p class="p-title-10">Kế hoạch quản lý môi trường</p>
+                              </td>
+                              <td width="7%">
+                                  <p  class="radio-10"><input type="checkbox" name="KeHoachQLMTStatus" value=""></p>
+                              </td>
+                              <td width="30%">
+                                  <p  class="text-10"><input type="text" placeholder="Điền vào đây..." name="KeHoachQLMTSoHieu.2" value=""></p>
+                              </td>
+                              <td width="18%">
+                                  <p  class="text-10"><input type="text" placeholder="Điền vào đây..." name="KeHoachQLMTNgayCap.2" value=""></p>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td width="44%">
+                                  <p class="p-title-10">Báo cáo hoàn thành các công trình bảo vệ môi trường phục vụ giai đoạn vận hành/ Báo cáo hoàn thành các công trình bảo vệ môi trường theo đề án bảo vệ môi trường chi tiết</p>
+                              </td>
+                              <td width="7%">
+                                  <p class="radio-10"><input type="checkbox" name="BCHoanThanhCTBVMTStatus" value=""></p>
+                              </td>
+                              <td width="30%">
+                                  <p  class="text-10"><input type="text" placeholder="Điền vào đây..." name="BCHoanThanhCTBVMTSoHieu" value=""></p>
+                              </td>
+                              <td width="18%">
+                                  <p  class="text-10"><input type="text" placeholder="Điền vào đây..." name="BCHoanThanhCTBVMTNgayCap" value=""></p>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td width="44%">
+                                  <p class="p-title-10">Hồ sơ xác nhận hệ thống quản lý môi trường</p>
+                              </td>
+                              <td width="7%">
+                                  <p class="radio-10"><input type="checkbox" name="HoSoXNHTQLMTStatus" value=""></p>
+                              </td>
+                              <td width="30%">
+                                  <p  class="text-10"><input type="text" placeholder="Điền vào đây..." name="HoSoXNHTQLMTSoHieu" value=""></p>
+                              </td>
+                              <td width="18%">
+                                  <p class="text-10"><input type="text" placeholder="Điền vào đây..." name="HoSoXNHTQLMTNgayCap" value=""></p>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td width="44%">
+                                  <p class="p-title-10">Hồ sơ đăng ký chủ nguồn thải khí thải công nghiệp</p>
+                              </td>
+                              <td width="7%">
+                                  <p class="radio-10"><input type="checkbox" name="HSDangKyNTKTCNStatus" value=""></p>
+                              </td>
+                              <td width="30%">
+                                  <p class="text-10"><input type="text" placeholder="Điền vào đây..." name="HSDangKyNTKTCNSoHieu" value=""></p>
+                              </td>
+                              <td width="18%">
+                                  <p class="text-10"><input type="text" placeholder="Điền vào đây..." name="HSDangKyNTKTCNNgayCap" value=""></p>
+                              </td>
+                          </tr>
+                      </tbody>
+                  </table>
+                  <p>3. Tình hình thực hiện các hồ sơ liên quan đến tài nguyên nước và hồ sơ môi trường khác:</p>
+
+                  <table border="1" width="100%" cellspacing="0" cellpadding="0" class="table-2">
+                      <thead style="font-weight: bold;">
+                          <tr>
+                              <td width="44%">
+                                  <p align="center">Loại hồ sơ</p>
+                              </td>
+                              <td width="7%">
+                                  <p align="center">Có</p>
+                              </td>
+                              <td width="30%">
+                                  <p align="center">Số hiệu văn bản thông báo/<br>giấy xác nhận</p>
+                              </td>
+                              <td width="18%">
+                                  <p align="center">Ngày cấp/<br>năm thực hiện</p>
+                              </td>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td width="44%">
+                                  <p class="p-title-10">Hồ sơ đăng ký chủ nguồn thải chất thải nguy hại</p>
+                              </td>
+                              <td width="7%">
+                                  <p class="radio-10"><input type="checkbox" name="HSDKCNChatThaiNHStatus" value=""></p>
+                              </td>
+                              <td width="30%">
+                                  <p class="text-10"><input type="text" placeholder="Điền vào đây..." name="HSDKCNChatThaiNHSoHieu" value=""></p>
+                              </td>
+                              <td width="18%">
+                                  <p class="text-10"><input type="text" placeholder="Điền vào đây..." name="HSDKCNChatThaiNHNgayCap" value=""></p>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td width="44%">
+                                  <p class="p-title-10">Áp dụng ISO 14001 vào hoạt động sản xuất</p>
+                              </td>
+                              <td width="7%">
+                                  <p class="radio-10"><input type="checkbox" name="ADISOStatus" value=""></p>
+                              </td>
+                              <td width="30%">
+                                  <p class="text-10"><input type="text" placeholder="Điền vào đây..." name="ADISOSoHieu" value=""></p>
+                              </td>
+                              <td width="18%">
+                                  <p class="text-10"><input type="text" placeholder="Điền vào đây..." name="ADISONgayCap" value=""></p>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td width="44%">
+                                  <p class="p-title-10">Hồ sơ xin cấp phép khai thác sử dụng nước mặt</p>
+                              </td>
+                              <td width="7%">
+                                  <p class="radio-10"><input type="checkbox" name="HSXinCapKTSDNMStatus" value=""></p>
+                              </td>
+                              <td width="30%">
+                                  <p class="text-10"><input type="text" placeholder="Điền vào đây..." name="HSXinCapKTSDNMSoHieu" value=""></p>
+                              </td>
+                              <td width="18%">
+                                  <p class="text-10"><input type="text" placeholder="Điền vào đây..." name="HSXinCapKTSDNMngayCap" value=""></p>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td width="44%">
+                                  <p class="p-title-10">Hồ sơ xin cấp phép khai thác nước dưới đất</p>
+                              </td>
+                              <td width="7%">
+                                  <p class="radio-10"><input type="checkbox" name="HSXCPKTNDuoiDatStatus" value=""></p>
+                              </td>
+                              <td width="30%">
+                                  <p class="text-10"><input type="text" placeholder="Điền vào đây..." name="HSXCPKTNDuoiDatSoHieu" value=""></p>
+                              </td>
+                              <td width="18%">
+                                  <p class="text-10"><input type="text" placeholder="Điền vào đây..." name="HSXCPKTNDuoiDatNgayCap" value=""></p>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td width="44%">
+                                  <p class="p-title-10">Hồ sơ xin phép xả nước thải vào nguồn nước</p>
+                              </td>
+                              <td width="7%">
+                                  <p class="radio-10"><input type="checkbox" name="HSXPXNuocThaiVNNStatus" value=""></p>
+                              </td>
+                              <td width="30%">
+                                  <p class="text-10"><input type="text" placeholder="Điền vào đây..." name="HSXPXNuocThaiVNNSoHieu" value=""></p>
+                              </td>
+                              <td width="18%">
+                                  <p class="text-10"><input type="text" placeholder="Điền vào đây..." name="HSXPXNuocThaiVNNNgayCap" value=""></p>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td width="44%">
+                                  <p class="p-title-10">Báo cáo quan trắc môi trường định kỳ/báo cáo giám sát môi trường định kỳ</p>
+                              </td>
+                              <td width="7%">
+                                  <p class="radio-10"><input type="checkbox" name="BCQTMTDinhKiStatus" value=""></p>
+                              </td>
+                              <td width="30%">
+                                  <p class="text-10"><input type="text" placeholder="Điền vào đây..." name="BCQTMTDinhKiSoHieu" value=""></p>
+                              </td>
+                              <td width="18%">
+                                  <p class="text-10"><input type="text" placeholder="Điền vào đây..." name="BCQTMTDinhKiNgayCap" value=""></p>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td width="44%">
+                                  <p class="p-title-10">Báo cáo tình hình phát sinh chất thải nguy hại</p>
+                              </td>
+                              <td width="7%">
+                                  <p class="radio-10"><input type="checkbox" name="BCTHPhatSinhCTNHStatus" value=""></p>
+                              </td>
+                              <td width="30%">
+                                  <p class="text-10"><input type="text" placeholder="Điền vào đây..." name="BCTHPhatSinhCTNHSoHieu" value=""></p>
+                              </td>
+                              <td width="18%">
+                                  <p class="text-10"input type="text" name="BCTHPhatSinhCTNHNgayCap" value=""></p>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td width="44%">
+                                  <p class="p-title-10">Báo cáo tình hình khai thác nước mặt</p>
+                              </td>
+                              <td width="7%">
+                                  <p class="radio-10"><input type="checkbox" name="BCTHKTNuocMatStatus" value=""></p>
+                              </td>
+                              <td width="30%">
+                                  <p class="text-10"><input type="text" placeholder="Điền vào đây..." name="BCTHKTNuocMatSoHieu" value=""></p>
+                              </td>
+                              <td width="18%">
+                                  <p class="text-10"><input type="text" placeholder="Điền vào đây..." name="BCTHKTNuocMatNgayCap" value=""></p>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td width="44%">
+                                  <p class="p-title-10">Báo cáo tình hình khai thác nước dưới đất</p>
+                              </td>
+                              <td width="7%">
+                                  <p class="radio-10"><input type="checkbox" name="BCTHKTNuocDuoiDatStatus" value=""></p>
+                              </td>
+                              <td width="30%">
+                                  <p class="text-10"><input type="text" placeholder="Điền vào đây..." name="BCTHKTNuocDuoiDatSoHieu" value="" ></p>
+                              </td>
+                              <td width="18%">
+                                  <p class="text-10"><input type="text" placeholder="Điền vào đây..." name="BCTHKTNuocDuoiDatNgayCap" value=""></p>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td width="44%">
+                                  <p class="p-title-10">Báo cáo tình hình xả nước thải vào nguồn nước</p>
+                              </td>
+                              <td width="7%">
+                                  <p class="radio-10"><input type="checkbox" name="BCTHXaNuocThaiStatus" value=""></p>
+                              </td>
+                              <td width="30%">
+                                  <p class="text-10"><input type="text" placeholder="Điền vào đây..." name="BCTHXaNuocThaiSoHieu" value=""></p>
+                              </td>
+                              <td width="18%">
+                                  <p class="text-10"><input type="text" placeholder="Điền vào đây..." name="BCTHXaNuocThaiNgayCap" value=""></p>
+                              </td>
+                          </tr>
+                      </tbody>
+                  </table>
+              
+                  <p class="MsoListParagraphCxSpFirst" style="mso-add-space: auto; text-indent: -18.55pt; line-height: normal; mso-list: l3 level1 lfo13; margin: 6.0pt 0in 3.0pt 21.3pt;"> <span><span style="mso-list: Ignore;">4<span style="font: 7.0pt 'Times New Roman';">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span>
+                  </span>
+                  <span style="padding-right: 30px">Cơ sở đã từng bị xử lý vi phạm trong lĩnh vực bảo vệ môi trường: </span>
+                  <span></span>
+                  <span><span style="mso-spacerun: yes;">&nbsp;</span>Có<span style="mso-spacerun: yes;">&nbsp;&nbsp;&nbsp;&nbsp; </span></span>
+                  <input type="radio" name="DaViPhamMT">
+                  <span></span>
+                  <span><span style="mso-spacerun: yes;">&nbsp;</span>Không</span>
+                  <input type="radio" name="DaViPhamMT">
+              </p>
+              <p class="MsoListParagraphCxSpMiddle" style="mso-add-space: auto; line-height: normal; tab-stops: 2.5in; margin: 6.0pt 0in 3.0pt 21.3pt;"><span lang="FR" style="font-size: 11.0pt; mso-ansi-language: FR;">Nếu có, nguyên nhân là: </span>
+                <input type="text" placeholder="Điền vào đây..." name="NguyenNhanViPham">
+                  <strong style="mso-bidi-font-weight: normal;">
+                    <span><span style="mso-no-proof: yes;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></strong>
+              </p>
+              <p class="MsoListParagraphCxSpLast" style="mso-add-space: auto; text-indent: -18.55pt; line-height: normal; mso-list: l3 level1 lfo13; margin: 6.0pt 0in 3.0pt 21.3pt;"> <span lang="FR" style="font-size: 12.0pt; mso-fareast-font-family: 'Times New Roman'; mso-ansi-language: FR;"><span style="mso-list: Ignore;">5<span style="font: 7.0pt 'Times New Roman';">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span>
+                  </span>
+                  <span lang="FR" style="mso-ansi-language: FR;">Thời điểm vi phạm (năm):<span style="mso-spacerun: yes;">&nbsp; </span></span>
+                  <span style="font-size: 11.0pt;"></span>
+                  <span style="mso-ansi-language: FR;">
+                    <span style="mso-spacerun: yes;">&nbsp;</span></span>
+                    <span lang="FR" style="mso-ansi-language: FR;">
+                        <span style="mso-spacerun: yes;">&nbsp;</span>2014<span style="mso-spacerun: yes;">&nbsp; </span></span>
+                  <span></span><input type="checkbox" name="ThoiDiem">
+                  <span style="mso-ansi-language: FR;"><span style="mso-spacerun: yes;">&nbsp;</span></span>
+                  <span lang="FR" style="mso-ansi-language: FR;"><span style="mso-spacerun: yes;">&nbsp;</span>2015<span style="mso-spacerun: yes;">&nbsp; </span></span>
+                  <span></span><input type="checkbox" name="txt2015">
+                  <span style="mso-ansi-language: FR;"><span style="mso-spacerun: yes;">&nbsp;</span></span><span lang="FR" style="mso-ansi-language: FR;"><span style="mso-spacerun: yes;">&nbsp;</span>2016<span style="mso-spacerun: yes;">&nbsp; </span></span>
+                  <span></span><input type="checkbox" name="txt2016">
+                  <span style="mso-ansi-language: FR;"><span style="mso-spacerun: yes;">&nbsp;</span></span><span lang="FR" style="mso-ansi-language: FR;"><span style="mso-spacerun: yes;">&nbsp;</span>2017<span style="mso-spacerun: yes;">&nbsp; </span>
+                  <span style="mso-spacerun: yes;">&nbsp;</span>
+                  </span><input type="checkbox" name="txt2017">
+                  <span></span>
+                  <span style="mso-ansi-language: FR;"><span style="mso-spacerun: yes;">&nbsp;</span></span><span lang="FR" style="mso-ansi-language: FR;"><span style="mso-spacerun: yes;">&nbsp;</span>2018</span>
+                  <input type="checkbox" name="txt2018">
+              </p>
+                  </div>
+                  
+
+                </div>
+            </div> 
+        </div>
+            </div>
+    </form>
+            <router-view></router-view>
+        </section><!-- /.content -->
+    </aside><!-- /.right-side -->
+    <div class="modal fade" id="keyboardShortcutsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">
+                    Available keyboard shortcuts on this page
+                </h4>
+            </div>
+            <div class="modal-body">
+                    <dl class="dl-horizontal">
+        <dt><code>b</code></dt>
+        <dd>Back to :name index</dd>
+    </dl>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="main-footer">
+    <div class="pull-right hidden-xs">
+        <b>Version</b> 3.6.1
+    </div>
+
+        <a data-toggle="modal" data-target="#keyboardShortcutsModal"><i class="fa fa-keyboard-o"></i></a> &nbsp;
+    <strong>Copyright © 2019 <a href="http://asgardcms.com" target="_blank">AsgardCms</a></strong>
+</footer>
+
+    <aside class="control-sidebar control-sidebar-dark" style="display:none">
+    <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+        <li class="active">
+            <a href="#sidebar-notifications" data-toggle="tab">
+                <i class="fa fa-bell-o"></i>
+            </a>
+        </li>
+        <li>
+            <a href="#sidebar-home" data-toggle="tab">
+                <i class="fa fa-home"></i>
+            </a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div id="sidebar-notifications" class="tab-pane active">
+            Tab 1
+        </div>
+        <div id="sidebar-home" class="tab-pane">
+            Home!
+        </div>
+    </div>
+</aside>
+<div class="control-sidebar-bg"></div>
+</div><!-- ./wrapper -->
+
+    <script src="http://localhost/soctdl/public/themes/adminlte/vendor/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="http://localhost/soctdl/public/themes/adminlte/js/vendor/mousetrap.min.js" type="text/javascript"></script>
+    <script src="http://localhost/soctdl/public/themes/adminlte/vendor/iCheck/icheck.min.js" type="text/javascript"></script>
+    <script src="http://localhost/soctdl/public/themes/adminlte/vendor/datatables.net/js/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script src="http://localhost/soctdl/public/themes/adminlte/vendor/datatables.net-bs/js/dataTables.bootstrap.min.js" type="text/javascript"></script>
+    <script src="http://localhost/soctdl/public/themes/adminlte/js/vendor/jquery.slug.js" type="text/javascript"></script>
+    <script src="http://localhost/soctdl/public/themes/adminlte/vendor/admin-lte/dist/js/adminlte.min.js" type="text/javascript"></script>
+    <script src="http://localhost/soctdl/public/themes/adminlte/vendor/admin-lte/plugins/pace/pace.min.js" type="text/javascript"></script>
+    <script src="http://localhost/soctdl/public/themes/adminlte/js/vendor/ckeditor/ckeditor.js" type="text/javascript"></script>
+<script>
+    window.AsgardCMS = {
+        translations: {"translations":{"title.translations":"Translations","title.edit translation":"Edit a translation","button.create translation":"Create a translation","table":[],"form":[],"messages":[],"validation":[],"Clear translation cache":"Clear translations cache","Export":"Export","Import":"Import","Import csv translations file":"Import csv translations file","only for developers":"Will require git management!","Translations exported":"Translations exported.","Translations imported":"Translations imported.","select CSV file":"Select CSV file ...","csv only allowed":"Please upload a CSV file only.","time":"Time","author":"Author","history":"History","No Revisions yet":"No Revisions yet","event":"Event","created":"Created","edited":"Edited","revert history":"Revert History","list resource":"List translations","edit resource":"Edit translations","import resource":"Import translations","export resource":"Export translations"},"core":{"modal.title":"Confirmation","modal.confirmation-message":"Are you sure you want to delete this record?","table.created at":"Created at","table.updated at":"Updated at","table.deleted at":"Deleted at","table.actions":"Actions","table.thumbnail":"Thumbnail","tab.english":"English","tab.french":"French","tab.dutch":"Dutch","tab.italian":"Italian","tab.greek":"\u0395\u03bb\u03bb\u03b7\u03bd\u03b9\u03ba\u03ac","tab.spanish":"Spanish","tab.polish":"Polish","tab.portuguese":"Portuguese","tab.arabic":"Arabic","tab.macedonian":"\u041c\u0430\u043a\u0435\u0434\u043e\u043d\u0441\u043a\u0438","tab.turkish":"T\u00fcrk\u00e7e","tab.czech":"Czech","tab.swedish":"Svenska","tab.korean":"Korean","tab.hungarian":"Magyar","button.cancel":"Cancel","button.create":"Create","button.update":"Update","button.delete":"Delete","button.reset":"Reset","button.see":"See","button.visualize":"Visualize","button.update and back":"Update and go back","save":"Save","confirm":"Confirm","move":"Move","widget":"Widget","widgets":"Widgets","breadcrumb.home":"Home","title.translatable fields":"Translatable fields","title.non translatable fields":"Non translatable fields","title.create resource":"Create :name","title.edit resource":"Edit :name","general.available keyboard shortcuts":"Available keyboard shortcuts on this page","general.view website":"View Website","general.complete your profile":"Complete your profile","general.profile":"Profile","general.sign out":"Sign out","messages.resource created":":name successfully created.","messages.resource not found":":name not found.","messages.resource updated":":name successfully updated.","messages.resource deleted":":name successfully deleted.","back":"Back","back to index":"Back to :name index","permission denied":"Permission denied. (required permission: \":permission\")","list resource":"List :name","create resource":"Create :name","edit resource":"Edit :name","destroy resource":"Delete :name","error token mismatch":"Your session timed out, please submit the form again.","error 404":"404","error 404 title":"Oops! This page was not found.","error 404 description":"The page you are looking for was not found.","error 500":"500","error 500 title":"Oops! Something went wrong","error 500 description":"An administrator was notified.","delete cancelled":"Delete cancelled","unauthorized":"Unauthorized","unauthorized-access":"You do not have the appropriate permissions to access that page.","unauthenticated":"Niet ingelogd","unauthenticated-access":"You need to be logged in to be able to view this page","something went wrong":"Whoops! Something went wrong.","mark as online":"Mark as online","mark as offline":"Mark as offline","back to backend":"Back to backend"},"sidebar":{"content":"Content","show group":"Show sidebar group"},"listcompanies":{"list resource":"List listcompanies","create resource":"Create listcompanies","edit resource":"Edit listcompanies","destroy resource":"Destroy listcompanies","title.listcompanies":"Listcompany","title.create listcompany":"Create a listcompany","title.edit listcompany":"Edit a listcompany","button.create listcompany":"Create a listcompany","table":[],"form":[],"messages":[],"validation":[]},"reports":{"list resource":"List reports","create resource":"Create reports","edit resource":"Edit reports","destroy resource":"Destroy reports","title.reports":"Report","title.create report":"Create a report","title.edit report":"Edit a report","button.create report":"Create a report","table":[],"form":[],"messages":[],"validation":[]},"dashboard":{"name":"Dashboard","edit grid":"Edit grid","reset grid":"Reset grid","save grid":"Save grid","add widget":"Add widget","add widget to dashboard":"Add widget to dashboard","reset not needed":"Dashboard didn't need resetting","dashboard reset":"Dashboard has been reset","list resource":"View dashboard","edit resource":"Update dashboard","reset resource":"Reset dashboard","welcome-title":"Welcome title","welcome-description":"Welcome description","welcome-enabled":"Enable welcome box?","configure your website":"Configure your website","add pages":"Add pages","add menus":"Add menus"},"categoryforms":{"list resource":"List categoryforms","create resource":"Create categoryforms","edit resource":"Edit categoryforms","destroy resource":"Destroy categoryforms","title.categoryforms":"Categoryform","title.create categoryform":"Create a categoryform","title.edit categoryform":"Edit a categoryform","button.create categoryform":"Create a categoryform","table":[],"form":[],"messages":[],"validation":[]},"listforms":{"list resource":"List listforms","create resource":"Create listforms","edit resource":"Edit listforms","destroy resource":"Destroy listforms","title.listforms":"Listform","title.create listform":"Create a listform","title.edit listform":"Edit a listform","button.create listform":"Create a listform","table":[],"form":[],"messages":[],"validation":[]},"companyforms":{"list resource":"List companyforms","create resource":"Create companyforms","edit resource":"Edit companyforms","destroy resource":"Destroy companyforms","title.companyforms":"Companyform","title.create companyform":"Create a companyform","title.edit companyform":"Edit a companyform","button.create companyform":"Create a companyform","table":[],"form":[],"messages":[],"validation":[]},"media":{"title.media":"Media","title.edit media":"Edit media","breadcrumb.media":"Media","table.filename":"Filename","table.width":"Width","table.height":"Height","form.alt_attribute":"Alt attribute","form.description":"Description","form.keywords":"Keywords","validation.max_size":"Maximum folder size (:size) of the Media folder reached.","file-sizes.B":"Bytes","file-sizes.KB":"Kb","file-sizes.MB":"Mb","file-sizes.GB":"Gb","file-sizes.TB":"Tb","choose file":"Choose a file","insert":"Insert this file","file picker":"File Picker","Browse":"Browse ...","upload file":"Upload a file","remove media":"Remove media","list resource":"List media","create resource":"Create media","edit resource":"Edit media","destroy resource":"Delete media","file too large":"File is too large. Must be below :size MB.","some files not moved":"Some files were not moved","files moved successfully":"Files moved successfully"},"folders":{"list resource":"List folder","create resource":"New folder","edit resource":"Edit folder","destroy resource":"Delete folder","folder was created":"Folder was successfully created","folder was updated":"Folder was successfully updated","folder name":"Folder name"},"menu":{"title":"Menu","titles.menu":"Menu management","titles.create menu":"Create a menu","titles.edit menu":"Edit a menu","titles.create menu item":"Create a menu item","titles.edit menu item":"Edit a menu item","breadcrumb.menu":"Menu management","breadcrumb.create menu":"Create a menu","breadcrumb.edit menu":"Edit a menu","breadcrumb.create menu item":"Create a menu item","breadcrumb.edit menu item":"Edit a menu item","button.create menu item":"Create a menu item","button.create menu":"Create a menu","table.name":"Name","table.title":"Title","form.title":"Title","form.name":"Name","form.status":"Online","form.uri":"URI","form.url":"URL","form.primary":"Primary menu (used for front-end routing)","form.description":"Menu Description (Can be used to provide extra information)","navigation.back to index":"Go back to the menu index","list resource":"List menus","create resource":"Create menus","edit resource":"Edit menus","destroy resource":"Delete menus"},"menu-items":{"form.page":"Page","form.module":"Module","form.target":"Target","form.same tab":"Same tab","form.new tab":"New tab","form.icon":"Icon","form.class":"CSS Class","form.parent menu item":"Parent Menu Item","link-type.link type":"Linktype","link-type.page":"Page","link-type.internal":"Internal","link-type.external":"External","list resource":"List menu items","create resource":"Create menu items","edit resource":"Edit menu items","destroy resource":"Delete menu items"},"settings":{"title.settings":"Settings","title.general settings":"General settings","title.module settings":"Module settings","title.module name settings":":module module settings","breadcrumb.settings":"Settings","breadcrumb.module settings":":module module settings","list resource":"List settings","edit resource":"Edit settings"},"tags":{"list resource":"List tags","create resource":"Create tags","edit resource":"Edit tags","destroy resource":"Destroy tags","tags":"Tags","tag":"Tag","create tag":"Create a tag","edit tag":"Edit a tag","name":"Name","slug":"Slug","namespace":"Namespace"},"users":{"button.new-user":"New User","title.users":"Users","title.new-user":"New user","title.edit-user":"Edit user","title.edit-profile":"Edit profile","breadcrumb.home":"Home","breadcrumb.users":"Users","breadcrumb.new":"New","breadcrumb.edit-user":"Edit user","breadcrumb.edit-profile":"Edit profile","tabs.data":"Data","tabs.roles":"Roles","tabs.permissions":"Permissions","tabs.new password":"New password","tabs.or send reset password mail":"or, send reset password email","form.first-name":"First name","form.last-name":"Last name","form.email":"Email","form.status":"Status","form.password":"Password","form.password-confirmation":"Password confirmation","form.new password":"New password","form.new password confirmation":"New password confirmation","form.is activated":"Activated","table.created-at":"Created At","table.first-name":"First name","table.last-name":"Last name","table.email":"Email","table.actions":"Actions","navigation.back to index":"Back to users index","new password setup":"Setup a new password","or send reset password mail":"or, send reset password email","send reset password email":"Send reset password email","my account":"My Account","profile":"Profile","api-keys":"Api Keys","generate new api key":"Generate new API key","delete api key confirm":"Deleting an api key will prevent any application to use this key.","your api keys":"Your API keys","you have no api keys":"You have no API keys.","generate one":"Generate one.","token generated":"API token was successfully generated","token deleted":"API token was successfully deleted","list user":"List users","create user":"Create users","edit user":"Edit users","destroy user":"Delete users","edit profile":"Edit Profile","list api key":"List api keys","create api key":"Create api keys","destroy api key":"Delete api keys","invalid login or password":"Invalid login or password.","account not validated":"Account not yet validated. Please check your email.","account is blocked":"Your account is blocked for :delay second(s)."},"roles":{"new-role":"New role","title.roles":"Roles","title.edit":"Edit role","title.users-with-roles":"Users with this role","breadcrumb.roles":"Roles","breadcrumb.new":"New","breadcrumb.edit":"Edit role","table.name":"Name","table.slug":"Slug","tabs.data":"Data","tabs.permissions":"Permissions","form.name":"Role name","form.slug":"Role slug","navigation.back to index":"Back to roles index","select all":"Select all","deselect all":"Deselect all","swap":"Swap","allow all":"Allow all","deny all":"Deny all","inherit all":"Inherit all","allow":"Allow","deny":"Deny","inherit":"Inherit from role","list resource":"List roles","create resource":"Create roles","edit resource":"Edit roles","destroy resource":"Delete roles"},"profilecompanies":{"list resource":"List profilecompanies","create resource":"Create profilecompanies","edit resource":"Edit profilecompanies","destroy resource":"Destroy profilecompanies","title.profilecompanies":"Profilecompany","title.create profilecompany":"Create a profilecompany","title.edit profilecompany":"Edit a profilecompany","button.create profilecompany":"Create a profilecompany","table":[],"form":[],"messages":[],"validation":[]},"formcompanies":{"list resource":"List formcompanies","create resource":"Create formcompanies","edit resource":"Edit formcompanies","destroy resource":"Destroy formcompanies","title.formcompanies":"Formcompany","title.create formcompany":"Create a formcompany","title.edit formcompany":"Edit a formcompany","button.create formcompany":"Create a formcompany","table":[],"form":[],"messages":[],"validation":[]},"notifies":{"list resource":"List notifies","create resource":"Create notifies","edit resource":"Edit notifies","destroy resource":"Destroy notifies","title.notifies":"Notify","title.create notify":"Create a notify","title.edit notify":"Edit a notify","button.create notify":"Create a notify","table":[],"form":[],"messages":[],"validation":[]},"manageforms":{"list resource":"List manageforms","create resource":"Create manageforms","edit resource":"Edit manageforms","destroy resource":"Destroy manageforms","title.manageforms":"Manageform","title.create manageform":"Create a manageform","title.edit manageform":"Edit a manageform","button.create manageform":"Create a manageform","table":[],"form":[],"messages":[],"validation":[]},"workshop":{"title":"Workshop","modules":"Modules","themes":"Themes","show sidebar group":"See sidebar group"},"modules":{"title":"Module Management","breadcrumb.modules":"Modules","tab.module list":"Module list","button.save module configuration":"Save module configuration","table.vendor":"Vendor","table.name":"Name","table.enabled":"Enabled","table.version":"Version","enabled":"Enabled","enable":"Enable","disabled":"Disabled","disable":"Disable","viewing module":"Viewing module","module":"Module","publish assets":"Publish assets","module enabled":"Module enabled.","module disabled":"Module disabled.","module cannot be disabled":"This is a core module, it can not be disabled.","changelog":"Changelog","added":"Added","changed":"Changed","removed":"Removed","list resource":"List modules","show resource":"View modules","update resource":"Update modules","disable resource":"Disable modules","enable resource":"Enable modules"},"themes":{"title":"Theme Management","breadcrumb.themes":"Themes","theme":"Theme","viewing theme":"Viewing theme :theme","type":"Type","list resource":"List themes","show resource":"View themes","publish assets":"Publish assets"},"pages":{"pages":"Pages","create page":"Create a page","edit page":"Edit a page","name":"Name","slug":"Slug","title":"Title","meta_data":"Meta data","meta_title":"Meta title","meta_description":"Meta description","facebook_data":"Facebook data","og_title":"Facebook title","og_description":"Facebook description","og_type":"Facebook type","template":"Page template name","is homepage":"Homepage ?","body":"Body","status":"Status","pages were updated":"Pages were updated","back to index":"Go back to the pages index","list resource":"List pages","create resource":"Create pages","edit resource":"Edit pages","destroy resource":"Delete pages","view-page":"View page","edit-page":"Edit page","validation.attributes.title":"title","validation.attributes.body":"body","facebook-types.website":"Website","facebook-types.product":"Product","facebook-types.article":"Article"}},
+        locales: {"en":{"name":"English","script":"Latn","native":"English"}},
+        currentLocale: 'en',
+        editor: 'ckeditor',
+        adminPrefix: 'backend',
+        hideDefaultLocaleInURL: '',
+        filesystem: 'local'
+    };
+</script>
+    <script type="text/javascript">
+        $( document ).ready(function() {
+            $(document).keypressAction({
+                actions: [
+                    { key: 'b', route: "http://localhost/soctdl/public/en/backend/form/listforms" }
+                ]
+            });
+        });
+    </script>
+    <script>
+        $( document ).ready(function() {
+            $('input[type="checkbox"].flat-blue, input[type="radio"].flat-blue').iCheck({
+                checkboxClass: 'icheckbox_flat-blue',
+                radioClass: 'iradio_flat-blue'
+            });
+        });
+    </script>
+</body>
+</html>
