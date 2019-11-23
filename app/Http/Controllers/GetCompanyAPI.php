@@ -34,34 +34,6 @@ class GetCompanyAPI extends Controller
         return view('welcome');
     }
 
-    public function qrcode(){
-        $list_qr = DB::table('tblqrcode')->get();
-        return view('qrcode')->with('list_qr',$list_qr);
-    }
-
-    public function getqrcode(Request $request)
-    {
-
-        // ================= my code=========================
-        // log::info($request->preview);
-        // log::info('C:/Users/Fjr3P/Desktop/'.$request->preview);
-        // $qrcode = new QrReader($request->preview);
-        
-        // $text = $qrcode->text();
-        // log::info($text);
-        // $list_qr = DB::table('tblqrcode')->get();
-        if(empty($request->not_found)){
-            return view('qrcode')->with('list_qr',$list_qr);
-        }else{
-            $detail = DB::table('tblqrcode')
-            ->leftjoin('tblqrdetail','tblqrcode.id','=','tblqrdetail.id_qrcode')
-            ->where('qr_code','=',$request->not_found)
-            ->first();
-            return view('qrcode')->with('detail',$detail);
-        }
-        
-    }
-
     public function checkExit (Request $request){
         $input = $request->mst;
 

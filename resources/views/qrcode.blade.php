@@ -6,6 +6,7 @@
     <script type="text/javascript" src="instascan.min.js"></script>
 </head>
 <body>
+  <a href="{{ asset('viewVueQRcode') }}">viewVueQRcode</a>
     ============ acces camera device ======================
     @if(!isset($detail))
       <table>
@@ -27,7 +28,7 @@
       </p>
     @endif
 
-<form action="{{ action('GetCompanyAPI@getqrcode') }}" method="post" enctype="multipart/form-data">
+<form action="{{ action('qrcodeController@getqrcode') }}" method="post" enctype="multipart/form-data">
   <input type="hidden" name="_token" value="{{ csrf_token() }}">
   {{-- <input type="file" accept="image/*" capture="camera" id="preview" name="preview" />
   <input type="submit" value="submit"> --}}

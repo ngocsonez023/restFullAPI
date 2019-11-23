@@ -43,6 +43,7 @@ tr:nth-child(even) {
         <li><a href="{{ asset('viewImportExportExcel') }}">import export</a></li>
         <li><a href="{{ asset('qrcode') }}">scan qr code</a></li>
         <li><a href="{{ asset('viewImage') }}">upload image</a></li>
+        <li><a href="{{ asset('sendMail') }}">send mail</a></li>
     </ol>
 <p>==================get api SCTDL==================================</p>
         <form action="{{ action('GetCompanyAPI@checkExit') }}" method="post">

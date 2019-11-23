@@ -30,8 +30,8 @@ Route::get('/viewImportExportExcel','importExportController@viewImportExportExce
 Route::get('json','moreRowController@index');
 Route::post('store-json','moreRowController@store')->name('store-json');
 // scan qr code
-Route::get('/qrcode', 'GetCompanyAPI@qrcode');
-Route::post('/getqrcode', 'GetCompanyAPI@getqrcode');
+Route::get('/qrcode', 'qrcodeController@qrcode');
+Route::post('/getqrcode', 'qrcodeController@getqrcode');
 // momo
 Route::get('/viewcheckout', 'integrateController@viewcheckout');
 Route::get('/getPaymentMethods', 'integrateController@getPaymentMethods');
@@ -40,3 +40,10 @@ Route::get('/getMomoDataApi', 'integrateController@getMomoDataApi');
 Route::get('/viewImage', 'imageController@viewImage');
 Route::post('/uploadOneImage', 'imageController@uploadOneImage');
 Route::post('/uploadMultiImage', 'imageController@uploadMultiImage');
+
+// view vue scan qrcode
+Route::get('/viewVueQRcode', 'qrcodeController@viewVueQRcode');
+Route::get('/vueCallLaravel', 'qrcodeController@vueCallLaravel');
+
+//send mail
+Route::get('/sendMail', 'mailController@sendMail');
