@@ -31,7 +31,8 @@ class GetCompanyAPI extends Controller
      */
     public function getAPI(Request $request)
     {
-        return view('welcome');
+        $result = DB::table('tblqrcode')->select('qr_code')->get();
+        return view('welcome')->with('result',$result);
     }
 
     public function checkExit (Request $request){
@@ -71,8 +72,22 @@ class GetCompanyAPI extends Controller
             
             return view('welcome')->with('data',$response->ID);
         }
-
     }
 
+    public function autocomplete(Request $request)
+    {
+        $query = $request->get('query');
+        $data = DB::table('tblqrcode')->select('qr_code')
+            ->where('qr_code', 'LIKE', "%{$query}%")->limit(8)->get();
+        $output = '<ul class="dropdown-menu" style="display:block; position:relative; width: 100%;">';
+        foreach($data as $row)
+            {
+            
+            $output .= '<li value = '. $row->qr_code .' class="autoli" style="padding-left: 19px;cursor: pointer;width: 100%; text-align: left;">'.$row->qr_code.'</li>';
+            
+            }
+        $output .= '</ul>';
+        echo $output;
+    }
 
 }

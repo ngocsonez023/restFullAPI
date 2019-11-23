@@ -8,6 +8,14 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      {{-- tagsinput --}}
+      <link rel="stylesheet" href="{{ asset('tagsinput/bootstrap-tagsinput.css')}}">
+      <script src="{{ asset('tagsinput/bootstrap-tagsinput.min.js')}}"></script>
+      {{-- select2 --}}
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 
 <style>
 table {
@@ -24,6 +32,9 @@ td, th {
 
 tr:nth-child(even) {
   background-color: #dddddd;
+}
+.label-info{
+  background-color: #00c0ef !important;
 }
 </style>
     </head>
@@ -45,6 +56,24 @@ tr:nth-child(even) {
         <li><a href="{{ asset('viewImage') }}">upload image</a></li>
         <li><a href="{{ asset('sendMail') }}">send mail</a></li>
     </ol>
+<p>================= multi tags input =========================================</p>
+  <input type="text" class="form-control" name="multitagsinput" id="test" data-role="tagsinput" />
+  <button id="btn1">btn</button>
+<p>================= select 2 =================================================</p>
+  <select name="product_relate[]" multiple class="form-control select2">
+    @if(isset($result))
+      @foreach( $result as $value)
+         <option value="{{ $value->qr_code }}">{{ $value->qr_code }}</option>
+      @endforeach
+    @endif  
+  </select>
+<p>================= auto complete and set timeout 3s =========================</p>
+  <div class="input-group col-md-12">
+      <input id="keyword" name="id_doanh_nghiep" type="text" class="form-control" placeholder="Nhập doanh nghiệp" />
+      <input id="showResult" type="text" class="form-control"/>
+      <div id="keywordList">
+      </div>
+  </div>
 <p>==================get api SCTDL==================================</p>
         <form action="{{ action('GetCompanyAPI@checkExit') }}" method="post">
             @csrf
@@ -119,6 +148,43 @@ tr:nth-child(even) {
                  <div class="nut">
                   <input  class="btn btn-success" type="button" value="Thêm dòng" onclick="add1()" /></div>
     </body>
+    <script type="text/javascript">
+      $(function () {
+
+  //Initialize Select2 Elements
+  $(".select2").select2();
+});
+    </script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('#keyword').fadeOut();
+        $('#showResult').keyup(function(){ 
+                var query = $(this).val();
+                if(query != '')
+                {
+                 var _token = $('input[name="_token"]').val();
+                 setTimeout(function(){ 
+                  $.ajax({
+                    url:"{{ asset('autocomplete') }}",
+                    method:"POST",
+                    data:{query:query, _token:_token},
+                    success:function(data){
+                      $('#keywordList').fadeIn();  
+                      $('#keywordList').html(data);
+                    }
+                  }); 
+                }, 3000);
+                }
+            });
+
+            $(document).on('click', '.autoli', function(){  
+                $('#showResult').val($(this).text()); 
+                $('#keyword').val($(this).val()); 
+                $('#keywordList').fadeOut();
+            });  
+
+        });
+    </script>
     <script>
 
         function check(){

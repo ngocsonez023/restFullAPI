@@ -18,6 +18,7 @@
 Route::get('/', 'GetCompanyAPI@getAPI');
 Route::post('/', 'GetCompanyAPI@getAPI');
 Route::post('/check', 'GetCompanyAPI@checkExit');
+Route::post('/autocomplete', 'GetCompanyAPI@autocomplete');
 // export pdf
 Route::get('/exportpdf','importExportController@exportpdf');
 //import excel
