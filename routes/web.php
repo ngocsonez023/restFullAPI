@@ -48,3 +48,6 @@ Route::get('/vueCallLaravel', 'qrcodeController@vueCallLaravel');
 
 //send mail
 Route::get('/sendMail', 'mailController@sendMail');
+
+// chart 
+Route::get('/chart', 'chartController@chart');
