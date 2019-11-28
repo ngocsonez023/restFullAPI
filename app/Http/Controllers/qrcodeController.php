@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use Log;
 // use QrReader;
 
 class qrcodeController extends Controller
@@ -36,11 +37,21 @@ class qrcodeController extends Controller
     }
 
     public function viewVueQRcode(){
-        return view('index');
+        return view('vueScanQRcode');
     }
 
-    public function vueCallLaravel(){
-        $data = DB::table('tblqrcode')->get();
-        return $data;
+    public function vueCallLaravel(Request $request){
+        $data = DB::table('tblqrcode')
+            ->leftjoin('tblqrdetail','tblqrcode.id','=','tblqrdetail.id_qrcode')
+            ->where('qr_code',$request->data)->first();
+        $output = $data->detail;
+        
+        return $output;
+    }
+
+    public function getDetailQRcode(Request $request){
+        log::info('==================');
+        log::info($request->data);
+        return view('index');
     }
 }

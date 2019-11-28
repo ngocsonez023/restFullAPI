@@ -45,6 +45,7 @@ Route::post('/uploadMultiImage', 'imageController@uploadMultiImage');
 // view vue scan qrcode
 Route::get('/viewVueQRcode', 'qrcodeController@viewVueQRcode');
 Route::get('/vueCallLaravel', 'qrcodeController@vueCallLaravel');
+Route::get('/getDetailQRcode', 'qrcodeController@getDetailQRcode');
 
 //send mail
 Route::get('/sendMail', 'mailController@sendMail');
