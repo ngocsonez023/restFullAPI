@@ -50,7 +50,7 @@ tr:nth-child(even) {
             @endif
         </div>
     <ol>
-        <li><a href="{{ asset('viewcheckout') }}">send box momo</a></li>
+        <li><a href="{{ asset('viewcheckout') }}">send box pay MOMO and NGAN LUONG</a></li>
         <li><a href="{{ asset('viewImportExportExcel') }}">import export</a></li>
         <li><a href="{{ asset('qrcode') }}">scan qr code</a></li>
         <li><a href="{{ asset('viewImage') }}">upload image</a></li>

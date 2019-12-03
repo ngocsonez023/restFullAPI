@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use Session;
+use Log;
 
 class integrateController extends Controller
 {
@@ -39,7 +40,16 @@ class integrateController extends Controller
             'momopay_data' => $momopay_data,
         );
 
+        // nganluong
+        $nganluongpay = [
+            'active' => '1',
+            'payment_currency' => 'vnd',
+            'payment_method' => 'nganluongpay',
+            'nganluong_apipoint' => $this->getNganLuongCheckoutLink($payments_setting[0])
+        ];
+
         $result[1] = $momopay;
+        $result[2] = $nganluongpay;
 
         return $result;
     }
@@ -73,4 +83,66 @@ class integrateController extends Controller
             "signature"		=> $signature
         ];
     }
+
+    // integrate Ngan Luong
+    private function getNganLuongCheckoutLink($payment_setting) {
+        $shipping_address = session('shipping_address');
+        $products_price = session('total_price');
+        $buyer_info = data_get($shipping_address, 'firstname') . '*|*' . '*|*' . data_get($shipping_address, 'delivery_phone') . '*|*' . data_get($shipping_address, 'street');
+
+        $nganluong_data = [
+            'merchant_site_code' => $payment_setting->nganluongpay_merchantsitecode,
+            // 'return_url' => url('/checkout/callback/nganluong'),
+            'return_url' => URL('/viewcheckout'),
+            'receiver' => $payment_setting->nganluongpay_receiver,
+            'transaction_info' => 'transactioninfo',
+            'order_code' => 'order' . time(),
+            // 'price' => strval(intval($products_price)),
+            'price' => 100000,
+            'currency' => 'vnd',
+            'quantity' => '1',
+            'tax' => '0',
+            'discount' => '0',
+            'fee_cal' => '0',
+            'fee_shipping' => '0',
+            'order_description' => 'orderdescription',
+            'buyer_info' => $buyer_info,
+            'affiliate_code' => '',
+            'lang' => 'vi',
+            // 'cancel_url' => url('/checkout/callback/nganluong'),
+            // 'notify_url' => url('/checkout/callback/nganluong')
+            'cancel_url' => url('/viewcheckout'),
+            'notify_url' => url('/viewcheckout')
+        ];
+
+        $secure_pass = $payment_setting->nganluongpay_securepass;
+        $secure_code = [
+            $nganluong_data['merchant_site_code'],
+            $nganluong_data['return_url'],      
+            $nganluong_data['receiver'],
+            $nganluong_data['transaction_info'],
+            $nganluong_data['order_code'],
+            $nganluong_data['price'],
+            $nganluong_data['currency'] ,
+            $nganluong_data['quantity'],
+            $nganluong_data['tax'],
+            $nganluong_data['discount'],
+            $nganluong_data['fee_cal'],
+            $nganluong_data['fee_shipping'],
+            $nganluong_data['order_description'],
+            $nganluong_data['buyer_info'],
+            $nganluong_data['affiliate_code'],
+            $secure_pass
+        ];
+
+        $nganluong_data['secure_code'] = MD5(implode(' ', $secure_code));
+
+        $query = [];
+        foreach ($nganluong_data as $k => $v) {
+            $query[] = "$k=$v"; 
+        }
+
+        return $payment_setting->nganluongpay_apipoint . '?'.implode('&', $query);
+    }
+
 }
