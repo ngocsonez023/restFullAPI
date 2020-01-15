@@ -52,3 +52,7 @@ Route::get('/sendMail', 'mailController@sendMail');
 
 // chart 
 Route::get('/chart', 'chartController@chart');
+
+Route::get('/checkout/Giaohangtietkiem', 'integrateController@checkoutGiaohangtietkiem');
+
+Route::get('/checkout/calDeliveryGHTT', 'integrateController@calDeliveryGHTT');

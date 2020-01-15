@@ -17,7 +17,7 @@
         @foreach($list_qr as $key => $value)
           <tr>
             <td> {{ $value->id }} </td>
-            <td> {!! QrCode::size(450)->generate($value->qr_code); !!} </td>
+            <td> {!! QrCode::size(450)->generate($value->id); !!} </td>
         </tr>
        
         @endforeach

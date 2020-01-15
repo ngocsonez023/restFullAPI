@@ -56,6 +56,8 @@ tr:nth-child(even) {
         <li><a href="{{ asset('viewImage') }}">upload image</a></li>
         <li><a href="{{ asset('sendMail') }}">send mail</a></li>
         <li><a href="{{ asset('chart') }}">chart => sử dụng laravel/framework 5.5.*</a></li>
+        <li><a href="{{ asset('checkout/Giaohangtietkiem')}}">send order for GHTK</a></li>
+        <li><a href="{{ asset('checkout/calDeliveryGHTT')}}">get price of GHTK</a></li>
     </ol>
 <p>================= multi tags input =========================================</p>
   <input type="text" class="form-control" name="multitagsinput" id="test" data-role="tagsinput" />

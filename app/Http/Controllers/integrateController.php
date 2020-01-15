@@ -145,4 +145,84 @@ class integrateController extends Controller
         return $payment_setting->nganluongpay_apipoint . '?'.implode('&', $query);
     }
 
+    public function checkoutGiaohangtietkiem(Request $request) {
+        $id = 'yolo'. now()->timestamp ;
+        $order = [
+            'products' => [
+                    "name" => "bút",
+                    "weight" => 0.1,
+                    "quantity" => 1
+                    ],
+            'order' => [
+                "id" => $id,
+                "pick_name" => "HCM-nội thành",
+                "pick_address" => "590 CMT8 P.11",
+                "pick_province" => "TP. Hồ Chí Minh",
+                "pick_district" => "Quận 3",
+                "pick_tel" => "0911222333",
+                "tel" => "0911222333",
+                "name" => "GHTK - HCM - Noi Thanh",
+                "address" => "123 nguyễn chí thanh",
+                "province" => "TP. Hồ Chí Minh",
+                "district" => "Quận 1",
+                "is_freeship" => "1",
+                "pick_date" => "2016-09-30",
+                "pick_money" => 47000,
+                "note" => "Khối lượng tính cước tối đa: 1.00 kg",
+                "value" => 3000000,
+                "transport" => "fly"
+            ]
+        ];
+        $data = json_encode($order);
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://services.giaohangtietkiem.vn/services/shipment/order",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS => $data,
+            CURLOPT_HTTPHEADER => array(
+                "Content-Type: application/json",
+                "Token: 1d5261338ACE773eEE972c038E80B355cFC604D5",
+            ),
+        ));
+
+        $response = curl_exec($curl);
+        curl_close($curl);
+        var_dump($response);
+    } 
+
+    function calDeliveryGHTT() {
+
+        $condition = [
+            "pick_province" => 'Hà Nội',
+            "pick_district" => 'Quận Hai Bà Trưng',
+            "province" => 'Hà nội',
+            "district" => 'Quận Cầu Giấy',
+            "address" => 'P.503 tòa nhà Auu Việt, số 1 Lê Đức Thọ',
+            "weight" => 1000,
+            "value" => 3000000,
+            "transport" => "fly"
+        ];
+        $query = http_build_query($condition);
+    $token = '1d5261338ACE773eEE972c038E80B355cFC604D5';
+    $url = "https://services.giaohangtietkiem.vn/services/shipment/fee?". $query;
+
+    $curl = curl_init();
+    curl_setopt_array($curl, array(
+        CURLOPT_URL => $url,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "GET",
+        CURLOPT_HTTPHEADER => array(
+            "Content-Type: application/json",
+            "Token: " . $token,
+        ),
+    ));
+
+    $response = curl_exec($curl);
+    curl_close($curl);
+    var_dump($response);
+}
+
 }

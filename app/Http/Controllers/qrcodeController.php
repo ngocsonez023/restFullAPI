@@ -50,8 +50,10 @@ class qrcodeController extends Controller
     }
 
     public function getDetailQRcode(Request $request){
-        log::info('==================');
-        log::info($request->data);
-        return view('index');
+        
+        $data = DB::table('tblqrcode')
+                ->leftjoin('tblqrdetail','tblqrdetail.id_qrcode','=','tblqrcode.id')
+                ->where('tblqrcode.id',$request->id)->first();
+        return view('vueReaderQRcode',compact('data'));
     }
 }

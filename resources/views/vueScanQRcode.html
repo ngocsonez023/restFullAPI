@@ -57,15 +57,21 @@
 
       methods: {
         onDecode(content) {
-          this.decodedContent = content,
-          axios.get('/restFullAPI/public/vueCallLaravel',{
-            params: 
-            {
-              data: this.decodedContent
-            }
-          })
-            .then(response => window.open("/restFullAPI/public/getDetailQRcode").document.write(response.data))
+          
+          this.decodedContent = content;
+                   
+          window.location.href = "getDetailQRcode?id=" + content;
         },
+        // onDecode(content) {
+        //   this.decodedContent = content,
+        //   axios.get('/restFullAPI/public/vueCallLaravel',{
+        //     params: 
+        //     {
+        //       data: this.decodedContent
+        //     }
+        //   })
+        //     .then(response => window.open("/restFullAPI/public/getDetailQRcode").document.write(response.data))
+        // },
 
         onInit(promise) {
           promise.then(() => {
