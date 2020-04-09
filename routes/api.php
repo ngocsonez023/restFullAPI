@@ -93,6 +93,8 @@ Route::post('/addbooks', function(Request $request){
 // api with token
 Route::post('auth/register', 'restFullAPIController@register');
 Route::post('auth/login', 'restFullAPIController@login');
+Route::post('auth/adminlogin', 'restFullAPIController@adminlogin');
+
 Route::group(['middleware' => 'jwt.auth'], function () {
     Route::get('user-info', 'restFullAPIController@getUserInfo');
 });

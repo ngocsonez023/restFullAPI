@@ -12,7 +12,8 @@ class mailController extends Controller
     // tool test send mail: https://www.smtper.net/
     public function sendMail(){
       
-        $email = 'zzkakashizz1@gmail.com';
+        $email = 'nhathuocnhanhoalamdong@gmail.com';
+        // $email = 'zzkakashizz1@gmail.com';
         $data = 'data show to view';
 
         Mail::send('sendmail', ['email'=>$email,'data'=>$data], function ($message) use ($email,$data) {
