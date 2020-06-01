@@ -16,6 +16,11 @@
       <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
       <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
       <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+      <!-- ckeditor 4 -->
+      <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+      <!-- ckeditor 5 -->
+        <script src="https://cdn.ckeditor.com/ckeditor5/19.0.0/classic/ckeditor.js"></script>
+
 
 <style>
 table {
@@ -59,6 +64,38 @@ tr:nth-child(even) {
         <li><a href="{{ asset('checkout/Giaohangtietkiem')}}">send order for GHTK</a></li>
         <li><a href="{{ asset('checkout/calDeliveryGHTT')}}">get price of GHTK</a></li>
     </ol>
+<p>================= CKEditort =========================================</p>
+<!-- reference: https://viblo.asia/p/image-uploads-with-ckeditor-ckfinder-and-laravel-5x-Eb85oE02Z2G -->
+  <div class="form-group col-md-12">
+   <h2>CKEditor 4</h2>
+   <textarea name="txtContent" class="form-control " id="editor1"></textarea>
+  </div> 
+  <script> 
+    CKEDITOR.replace( 'editor1', {
+        filebrowserBrowseUrl: '{{ asset('ckfinder/ckfinder.html') }}',
+        filebrowserImageBrowseUrl: '{{ asset('ckfinder/ckfinder.html?type=Images') }}',
+        filebrowserFlashBrowseUrl: '{{ asset('ckfinder/ckfinder.html?type=Flash') }}',
+        filebrowserUploadUrl: '{{ asset('ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files') }}',
+        filebrowserImageUploadUrl: '{{ asset('ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images') }}',
+        filebrowserFlashUploadUrl: '{{ asset('ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash') }}'
+    } );
+</script>
+ <h2>CKEditor 5</h2>
+<div id="editor">
+        <p>This is some sample content.</p>
+    </div>
+    <script>
+        ClassicEditor
+            .create( document.querySelector( '#editor' ), {
+              ckfinder: {
+      uploadUrl: '<?php echo asset('ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images&responseType=json') ?>',
+    },
+    toolbar: [ 'ckfinder', 'imageUpload', '|', 'heading', '|', 'bold', 'italic', '|', 'undo', 'redo' ]
+            } )
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>
 <p>================= multi tags input =========================================</p>
   <input type="text" class="form-control" name="multitagsinput" id="test" data-role="tagsinput" />
   <button id="btn1">btn</button>
