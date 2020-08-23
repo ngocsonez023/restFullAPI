@@ -68,6 +68,7 @@ tr:nth-child(even) {
 <!-- reference: https://viblo.asia/p/image-uploads-with-ckeditor-ckfinder-and-laravel-5x-Eb85oE02Z2G -->
   <div class="form-group col-md-12">
    <h2>CKEditor 4</h2>
+   <p>có thể dùng ckfinder.php => http://localhost/restfullApi/public/ckfinder/ckfinder.php</p>
    <textarea name="txtContent" class="form-control " id="editor1"></textarea>
   </div> 
   <script> 
